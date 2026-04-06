@@ -158,4 +158,11 @@ Document and Image Uploads: Utilizing UploadThing for hassle-free file managemen
 - **Stripe** for payment processing: Integrated with Stripe's webhooks for handling transactions.
 - Other third-party services as required by the application.
 
+## Code Improvements Applied
 
+- Add regression tests around the highest-risk files:
+  - `lms-app/app/(dashboard)/_components/sidebar-item.tsx`
+  - `lms-app/app/(course)/courses/[courseId]/_components/course-sidebar.tsx`
+  - `lms-app/app/(dashboard)/_components/sidebar.tsx`
+- Consider extracting shared utility code into a dedicated module to lower coupling.
+- Re-index and regenerate walkthroughs/diagrams after structural changes to keep documentation current.
