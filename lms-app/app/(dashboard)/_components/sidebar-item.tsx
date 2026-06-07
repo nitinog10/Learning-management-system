@@ -1,4 +1,6 @@
-```
+```typescript
+// File: lms-app/app/(dashboard)/_components/sidebar-item.tsx
+
 import { usePathname, useRouter } from "next/navigation"
 import { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -14,7 +16,7 @@ const SidebarItem = ({ icon: Icon, label, href }: SidebarItemProps) => {
     const pathname = usePathname()
     const router = useRouter()
 
-    const onClick = () => {
+    const handleClick = () => {
         router.push(href)
     }
 
@@ -22,7 +24,7 @@ const SidebarItem = ({ icon: Icon, label, href }: SidebarItemProps) => {
 
     return (
         <button
-            onClick={onClick}
+            onClick={handleClick}
             type="button"
             className={cn("flex items-center gap-x-2 text-slate-500 text-sm font-[500] pl-6 transition-all hover:text-slate-600 hover:bg-slate-300/20", isActive && " text-sky-800 font-[600] bg-sky-300/20 hover:bg-sky-200/20 hover:text-sky-700")}
         >
