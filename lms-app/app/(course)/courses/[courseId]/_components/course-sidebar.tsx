@@ -22,8 +22,8 @@ export const CourseSidebar = ({
   chapters,
   userId,
 }: CourseSidebarProps) => {
-  const { userId } = auth();
-  if (!userId) {
+  const { userId: authUserId } = auth();
+  if (!authUserId) {
     return redirect("/");
   }
 
