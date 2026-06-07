@@ -2,63 +2,48 @@
 
 ## Project Overview
 
-This repository contains the source code for an LMS (Learning Management System) application. The app allows users to sign in, sign up, browse courses, view course details, and interact with course chapters. It is built using Next.js, TypeScript, and Tailwind CSS.
+```
+The `repo_d524540f5f7f` repository contains the source code for a Learning Management System (LMS) application. The application allows users to sign up, sign in, browse courses, enroll in courses, and track their progress. The primary tech stack includes React for the frontend, Next.js for server-side rendering, and TypeScript for type safety.
 
-The main folder, `lms-app`, contains the core application code. Key files include `next.config.js` for configuring Next.js, `tailwind.config.js` for Tailwind CSS settings, and `tsconfig.json` for TypeScript configuration. The `app` folder houses the React components, organized into sections for authentication, courses, and the dashboard. 
+The folder structure is organized to separate concerns effectively. The `lms-app` directory contains the core application code, including configuration files like `next.config.js`, `tailwind.config.js`, and `tsconfig.json`. The `actions` directory houses utility functions for fetching data, such as `get-courses.ts` and `get-progress.ts`.
 
-The `actions` folder contains TypeScript files for fetching data, such as course details and user progress. The `components` folder within each course and chapter page holds smaller, reusable components like sidebars and buttons. This structure allows for modular, maintainable code.
+The `app` directory is further divided into subdirectories for authentication (`auth`), course management (`course`), and the dashboard (`dashboard`). Each subdirectory contains its own `layout.tsx` and `page.tsx` files, along with component-specific directories for reusable UI elements.
 
-The target users of this application are students looking to browse and enroll in courses, as well as teachers who can manage their courses and view analytics. The app provides a comprehensive interface for both roles within the LMS.
+This LMS application is intended for educational institutions, e-learning platforms, and anyone looking to create a structured learning environment with course enrollment and progress tracking capabilities.
+```
 
 ## Architecture
 
 ```markdown
-## Architecture
+### Code Organization
 
-### Overview
+The codebase is organized into several key layers and modules:
 
-The `lms-app` codebase is structured to support a Learning Management System (LMS) with a clear separation of concerns, leveraging Next.js for server-side rendering and routing. The architecture is designed to be modular, allowing for easy maintenance and scalability.
-
-### Directory Structure
-
-- **`lms-app/`**: Root directory containing configuration files, actions, and the main application code.
-  - **`actions/`**: Contains asynchronous data fetching functions (`get-analytics.ts`, `get-chapters.ts`, etc.) that interact with the backend API.
-  - **`app/`**: Main application directory with subdirectories for different features (`auth`, `course`, `dashboard`).
-    - **`auth/`**: Handles authentication-related routes and components.
-    - **`course/`**: Manages course-related pages and components.
-    - **`dashboard/`**: Contains dashboard-specific layouts, routes, and components.
-
-### Key Files and Their Roles
-
-- **`next.config.js`**: Configures Next.js settings, including custom routes and server-side rendering options.
-- **`tailwind.config.js`**: Configures Tailwind CSS for styling components.
-- **`tsconfig.json`**: TypeScript configuration file ensuring type safety across the codebase.
-- **`globals.css`**: Defines global CSS styles applied throughout the application.
-- **`layout.tsx`**: Main layout component that wraps around pages, providing a consistent structure.
+- **Configuration Files**: These include `next.config.js`, `tsconfig.json`, `tailwind.config.js`, and others. They are responsible for setting up the development environment and build processes.
+- **Actions**: Located in the `actions` directory, these files handle data fetching and business logic. Examples include `get-courses.ts` and `get-analytics.ts`.
+- **Components**: The `app` directory contains all the React components, organized by feature areas such as `(auth)`, `(course)`, and `(dashboard)`. Each feature area has its own layout and route-specific components.
+- **Middleware**: The `middleware.ts` file likely contains middleware functions for handling requests and responses.
 
 ### Data Flow
 
-Data flows through the system primarily via asynchronous actions defined in the `actions/` directory. These actions fetch data from the backend API and pass it down to components via props or context. Components then render the UI based on this data.
+Data flows through the system in the following manner:
 
-### Design Patterns
+1. **Actions**: Data fetching is initiated by action functions in the `actions` directory. These functions communicate with the backend or external APIs to retrieve data.
+2. **Components**: The fetched data is then passed down to React components via props or context. Components use this data to render UI and handle user interactions.
+3. **Middleware**: Middleware functions may intercept requests or responses to perform additional processing, such as authentication or logging.
 
-- **Modularization**: The codebase is divided into distinct modules (`auth`, `course`, `dashboard`), each responsible for a specific feature.
-- **Component-Based Architecture**: UI is built using reusable React components, promoting code reuse and maintainability.
-- **Server-Side Rendering (SSR)**: Next.js is used to pre-render pages on the server, improving performance and SEO.
+### Key Design Patterns
+
+- **Component-Based Architecture**: The application is built using a component-based approach, where each feature area (e.g., authentication, courses, dashboard) has its own set of components.
+- **Separation of Concerns**: Business logic is separated from UI components. Actions handle data fetching, while components focus on rendering and user interactions.
+- **Layout Components**: Each feature area has a layout component (e.g., `layout.tsx` in `(auth)`, `(course)`, and `(dashboard)`) that provides a consistent structure for its routes.
 
 ### Main Entry Points
 
-- **`app/layout.tsx`**: The main layout component that wraps all pages, providing a consistent structure and global styles.
-- **`app/(auth)/(routes)/sign-in/[[...sign-in]]/page.tsx`**: Entry point for the sign-in page.
-- **`app/(course)/courses/[courseId]/page.tsx`**: Entry point for course pages.
-- **`app/(dashboard)/(routes)/(root)/page.tsx`**: Entry point for the dashboard root page.
-
-### Practical Notes for New Team Members
-
-- **Understanding the Module Structure**: Familiarize yourself with the modular structure to quickly locate and modify specific features.
-- **Using Actions for Data Fetching**: Leverage the actions in the `actions/` directory for data fetching to ensure consistency and reduce redundancy.
-- **Component Reusability**: Look for opportunities to create reusable components to maintain a clean and efficient codebase.
-- **Type Safety**: Utilize TypeScript to ensure type safety and catch errors early in the development process.
+- **`next.config.js`**: The main configuration file for the Next.js application.
+- **`app/layout.tsx`**: The root layout component that wraps the entire application.
+- **Feature-Specific Layouts**: Each feature area has its own layout component (e.g., `app/(auth)/layout.tsx`, `app/(course)/layout.tsx`) that serves as the entry point for its routes.
+- **Action Functions**: Located in the `actions` directory, these functions are the entry points for data fetching and business logic.
 ```
 
 ## Directory Structure
@@ -254,7 +239,7 @@ Data flows through the system primarily via asynchronous actions defined in the 
 │       ├── chapter-route.js
 │       ├── course-route.js
 │       └── stripeCustomer-route.js
-└── nitinog10-Learning-management-system-ac95fd2/
+└── nitinog10-Learning-management-system-9ad5412/
     ├── README.md
     ├── lms-app/
     │   ├── .eslintrc.json
@@ -471,22 +456,22 @@ File too large for inline documentation.
 
 #### Module Overview
 
-This file configures ESLint for the `lms-app` module. It extends a predefined set of rules from `next/core-web-vitals`, ensuring consistent code quality and style across the project.
+This file configures ESLint for the LMS application, extending the Next.js core web vitals configuration to ensure consistent code quality and adherence to best practices.
 
 #### Dependencies
 
-- **`next/core-web-vitals`**: Provides a set of ESLint rules focused on core web vitals and best practices for Next.js applications.
+- **next/core-web-vitals**: This preset includes rules that focus on core web vitals and performance, ensuring that the codebase maintains high performance standards.
 
 #### Configuration
 
 | Configuration | Purpose |
 |---------------|---------|
-| `extends`     | Uses predefined rules from `next/core-web-vitals`. |
+| `extends` | Uses the Next.js core web vitals preset to inherit rules that focus on performance and web vitals. |
 
 #### Notes
 
-- This configuration ensures that the `lms-app` module adheres to Next.js best practices and maintains consistent code quality.
-- No additional customizations are included in this file. If further customization is needed, it should be added directly in this configuration file.
+- The configuration is minimal, relying on the Next.js preset for comprehensive linting rules.
+- Ensure that any custom rules or overrides are added carefully to avoid conflicts with the core web vitals preset.
 
 ---
 
@@ -499,33 +484,39 @@ This file configures ESLint for the `lms-app` module. It extends a predefined se
 
 #### Module Overview
 
-This file serves as the entry point for our LMS application, providing essential setup instructions, dependencies, and overviews of key components. It's designed to help new developers get up to speed quickly and understand the structure and functionality of the application.
+This file provides essential information and setup instructions for the LMS application, a Next.js project bootstrapped with `create-next-app`. It includes commands to start the development server, links to learn more about Next.js, and deployment instructions on Vercel.
 
 #### Dependencies
 
-| Dependency | Purpose |
-|------------|---------|
-| `create-next-app` | Bootstraps the Next.js project. |
-| `next/font` | Optimizes and loads custom Google Fonts. |
+| Import | Purpose |
+| --- | --- |
+| `next/font` | Optimizes and loads custom Google Fonts, specifically Inter. |
 
 #### Classes
 
 | Class | Purpose | Key Methods |
-|-------|---------|-------------|
+| --- | --- | --- |
 | N/A | N/A | N/A |
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
-|----------|------------|---------|-------------|
-| `runDev` | N/A | N/A | Starts the development server. |
+| --- | --- | --- | --- |
+| `npm run dev` | N/A | N/A | Starts the development server. |
+| `yarn dev` | N/A | N/A | Starts the development server. |
+| `pnpm dev` | N/A | N/A | Starts the development server. |
+
+#### Configuration
+
+| Configuration | Purpose |
+| --- | --- |
+| `next/font` | Automatically optimizes and loads the custom Google Font Inter. |
 
 #### Notes
 
-- The development server can be started using `npm run dev`, `yarn dev`, or `pnpm dev`.
-- Editing `app/page.tsx` will automatically update the page in the browser.
-- The project uses `next/font` to optimize and load the custom Google Font Inter.
-- For deployment, Vercel is recommended as it's the platform created by Next.js maintainers.
+- To see the application in action, open [http://localhost:3000](http://localhost:3000) in your browser.
+- Editing `app/page.tsx` will auto-update the page.
+- For more details on deployment, refer to the [Next.js deployment documentation](https://nextjs.org/docs/deployment).
 
 ---
 
@@ -536,46 +527,47 @@ This file serves as the entry point for our LMS application, providing essential
 
 # lms-app/components.json
 
-#### Module Overview
-
-This file defines configuration settings for our component library, specifying styles, imports, and aliases used across the LMS application. It ensures consistency and streamlines the development process by centralizing these settings.
+This file defines the configuration for our component library, specifying styles, imports, and aliases to streamline development within the LMS application.
 
 #### Dependencies
 
 - **$schema**: Defines the JSON schema for validation.
-- **tailwind**: Configuration for Tailwind CSS, including the base color and CSS variable settings.
-- **aliases**: Shortcuts for frequently used paths to simplify imports.
+- **tailwind**: Configuration for Tailwind CSS, including the custom configuration file, global CSS file, base color, and CSS variables.
 
 #### Classes
 
 | Class | Purpose | Key Methods |
-|-------|---------|------------|
-| N/A   | N/A     | N/A         |
+| --- | --- | --- |
+| N/A | N/A | N/A |
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
-|----------|------------|---------|-------------|
-| N/A      | N/A        | N/A     | N/A         |
+| --- | --- | --- | --- |
+| N/A | N/A | N/A | N/A |
 
 #### Configuration
 
-| Key              | Value            | Description                  |
-|------------------|------------------|------------------------------|
-| `$schema`        | URL              | JSON schema for validation   |
-| `style`          | `default`        | Default styling configuration|
-| `rsc`            | `true`           | Enables resource configuration|
-| `tsx`            | `true`           | Enables TypeScript and JSX   |
-| `tailwind.config`| `tailwind.config.js` | Tailwind CSS configuration file |
-| `css`            | `app/globals.css`| Global CSS file             |
-| `baseColor`      | `slate`          | Base color for Tailwind theme|
-| `cssVariables`   | `true`           | Enables CSS variables        |
+| Key | Value | Description |
+| --- | --- | --- |
+| `$schema` | `https://ui.shadcn.com/schema.json` | Specifies the JSON schema for validation. |
+| `style` | `default` | Sets the default style for components. |
+| `rsc` | `true` | Enables resource sharing configuration. |
+| `tsx` | `true` | Enables TypeScript with JSX support. |
+| `tailwind` | N/A | Tailwind CSS configuration. |
+| `tailwind.config` | `tailwind.config.js` | Path to the Tailwind CSS configuration file. |
+| `css` | `app/globals.css` | Path to the global CSS file. |
+| `baseColor` | `slate` | Base color theme for Tailwind CSS. |
+| `cssVariables` | `true` | Enables CSS variables for Tailwind CSS. |
+| `aliases` | N/A | Aliases for module imports. |
+| `components` | `@/components` | Alias for the components directory. |
+| `utils` | `@/lib/utils` | Alias for the utilities directory. |
 
 #### Notes
 
-- Ensure that all paths in `aliases` are correctly set to avoid import errors.
-- Changes to the `tailwind` configuration will affect all components using Tailwind CSS.
-- The `$schema` URL should always be kept up-to-date to ensure validation accuracy.
+- Ensure that the Tailwind CSS configuration file (`tailwind.config.js`) is correctly set up to avoid styling issues.
+- The `aliases` section helps in reducing the complexity of import statements by providing shortcuts to frequently used directories.
+- The `baseColor` is set to `slate`, which should be consistent across the application for a uniform look and feel.
 
 ---
 
@@ -594,7 +586,7 @@ This file configures authentication middleware for the LMS application using Cle
 
 | Import | Purpose |
 | --- | --- |
-| `authMiddleware` | Provides the middleware functionality for authentication. |
+| `authMiddleware` | Provides the authentication middleware functionality from Clerk's Next.js library. |
 
 #### Classes
 
@@ -606,20 +598,20 @@ This file configures authentication middleware for the LMS application using Cle
 
 | Function | Parameters | Returns | Description |
 | --- | --- | --- | --- |
-| `authMiddleware` | Configuration object | Middleware function | Configures authentication middleware for protected routes |
+| `authMiddleware` | `{ publicRoutes: string[] }` | `Middleware` | Configures the middleware to protect routes, allowing public access to specified routes. |
 
 #### Configuration
 
 | Key | Value | Description |
 | --- | --- | --- |
-| `publicRoutes` | `["/api/uploadthing", "/api/webhook"]` | Routes that are publicly accessible without authentication |
-| `matcher` | `['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)']` | Route patterns to match for middleware application |
+| `publicRoutes` | `["/api/uploadthing", "/api/webhook"]` | Routes that are publicly accessible without authentication. |
+| `matcher` | `['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)']` | Pattern to match routes that should be protected by the middleware. |
 
 #### Notes
 
-- The `publicRoutes` array specifies routes that do not require authentication.
-- The `matcher` configuration determines which routes the middleware applies to.
-- Comments in the code indicate how to adjust the configuration to allow other routes to be public.
+- The `publicRoutes` array includes routes that should be accessible without authentication.
+- The `matcher` configuration ensures that all routes except those listed in `publicRoutes` are protected.
+- Ensure to update the `publicRoutes` array as needed to reflect the routes that should remain public.
 
 ---
 
@@ -630,22 +622,22 @@ This file configures authentication middleware for the LMS application using Cle
 
 # lms-app/next.config.js
 
-This file configures the Next.js framework for our project. It specifies settings for image domains to optimize image loading.
+This file configures the Next.js framework for our project. It specifies settings for image loading, including which external domains are allowed for image sources.
 
 #### Dependencies
 
-- `import('next').NextConfig`: This is the Next.js configuration type.
+- **next**: This is the core Next.js configuration file that sets up the framework's behavior.
 
 #### Configuration
 
 | Configuration | Purpose |
 |---------------|---------|
-| `images.domains` | Specifies allowed domains for image loading. |
+| `images.domains` | Specifies external domains from which images can be loaded. |
 
 #### Notes
 
-- The `images.domains` array includes domains from which images can be loaded. Adding a domain here allows Next.js to optimize images from that source.
-- Ensure that any new image domains you add are included in this configuration to benefit from Next.js's image optimization features.
+- The `images.domains` array includes `"utfs.io"`, which is the domain currently allowed for external image sources.
+- Ensure any new domains added to this list are secure and trusted to avoid potential security risks.
 
 ---
 
@@ -655,44 +647,48 @@ This file configures the Next.js framework for our project. It specifies setting
 #### Overview
 
 ```markdown
-# `lms-app/package.json` Overview
+# `lms-app/package.json`
 
-This file defines the project metadata and dependencies for the `lms-app` module. It's essential for managing the project's build, development, and testing processes.
+#### Module Overview
+
+This file is the heart of our project's dependencies and scripts. It defines the project's metadata, scripts for development and production, and all the libraries and tools required to build and run the application.
 
 #### Dependencies
 
-| Dependency | Purpose |
-|------------|---------|
-| `@clerk/nextjs` | Authentication for Next.js applications |
+| Library | Purpose |
+|---------|---------|
+| `@clerk/nextjs` | Authentication for Next.js |
 | `@hookform/resolvers` | Validation resolvers for React Hook Form |
-| `@mux/mux-node` | Mux API client for Node.js |
-| `@radix-ui/react-alert-dialog` | Accessible alert dialog component |
-| `@tanstack/react-table` | Headless table component for React |
-| `axios` | Promise-based HTTP client |
-| `clsx` | Utility for constructing className strings conditionally |
-| `next` | Framework for server-rendered React applications |
-| `react` | Library for building user interfaces |
-| `react-hook-form` | React hooks for managing forms |
-| `react-hot-toast` | Simple, accessible toast notifications |
-| `stripe` | Payment processing library |
+| `@mux/mux-node` | Mux API for video handling |
+| `@radix-ui/react-*` | UI components from Radix |
+| `@tanstack/react-table` | Advanced table handling |
+| `axios` | HTTP requests |
+| `clsx` | Conditional class names |
+| `next` | Framework for building the application |
+| `react` | Core React library |
+| `react-hook-form` | Form handling and validation |
+| `react-icons` | Icon library |
+| `stripe` | Payment processing |
 | `tailwindcss` | Utility-first CSS framework |
-| `zustand` | State management library for React |
+| `zustand` | State management |
 
 #### Scripts
 
-| Script | Description |
-|--------|-------------|
-| `dev` | Starts the application in development mode |
-| `build` | Builds the application for production |
-| `start` | Starts the application in production mode |
-| `lint` | Runs ESLint to check for code quality issues |
+| Script | Command |
+|--------|---------|
+| `dev` | `next dev` |
+| `build` | `next build` |
+| `start` | `next start` |
+| `lint` | `next lint` |
 
 #### Notes
 
 - Ensure all dependencies are up-to-date to avoid compatibility issues.
 - The `devDependencies` section includes tools specifically for development, like `prisma` for database management.
-- When adding new dependencies, consider their impact on bundle size and performance.
+- When adding new dependencies, run `npm install` or `yarn install` to update the `node_modules` folder.
 ```
+
+This should give you a clear understanding of what the `package.json` file does and how it fits into our project. If you have any questions, feel free to ask!
 
 ---
 
@@ -703,27 +699,24 @@ This file defines the project metadata and dependencies for the `lms-app` module
 
 # lms-app/postcss.config.js
 
-This file configures PostCSS plugins for the project, specifically enabling Tailwind CSS and Autoprefixer.
+This file configures PostCSS plugins for the project. It sets up Tailwind CSS and Autoprefixer to handle CSS styling and compatibility across different browsers.
 
 #### Dependencies
 
-| Import | Purpose |
-| --- | --- |
-| `tailwindcss` | Integrates Tailwind CSS for utility-first styling. |
-| `autoprefixer` | Automatically adds vendor prefixes to CSS rules using values from Can I Use. |
+- `tailwindcss`: A utility-first CSS framework for rapidly building custom user interfaces.
+- `autoprefixer`: A postprocessor that adds vendor prefixes to CSS rules using values from `Can I Use`.
 
 #### Configuration
 
-| Setting | Purpose |
-| --- | --- |
-| `plugins.tailwindcss` | Enables Tailwind CSS. |
-| `plugins.autoprefixer` | Enables Autoprefixer. |
+| Configuration | Purpose |
+|---------------|---------|
+| `tailwindcss` | Integrates Tailwind CSS for utility-first styling. |
+| `autoprefixer` | Adds necessary vendor prefixes to ensure compatibility across browsers. |
 
 #### Notes
 
-- Tailwind CSS is configured without any options, using its default settings.
-- Autoprefixer is also configured without any options, using its default settings.
-- This configuration assumes that the project is set up to use PostCSS.
+- Tailwind CSS and Autoprefixer are essential for maintaining a consistent and cross-browser compatible styling approach.
+- Ensure that the PostCSS configuration aligns with the project's CSS strategy and requirements.
 
 ---
 
@@ -734,36 +727,31 @@ This file configures PostCSS plugins for the project, specifically enabling Tail
 
 # lms-app/tailwind.config.js
 
-This file configures Tailwind CSS for the LMS application, integrating custom utilities and themes to ensure a consistent design system.
+#### Module Overview
+
+This file configures Tailwind CSS for the LMS application, integrating custom utilities and themes to ensure a consistent and responsive design across the app.
 
 #### Dependencies
 
 | Import | Purpose |
 | --- | --- |
-| `withUt` from `uploadthing/tw` | Utility to integrate Uploadthing with Tailwind CSS |
+| `withUt` | A utility from `uploadthing/tw` to enhance Tailwind CSS with additional features. |
 
 #### Configuration
 
 | Key | Value | Description |
 | --- | --- | --- |
-| `darkMode` | `["class"]` | Enables dark mode via class toggling |
-| `content` | Array of file paths | Specifies where Tailwind should look for class names |
-| `theme` | Object | Customizations to the default theme |
-| `plugins` | Array | Plugins to extend Tailwind's functionality |
-
-#### Classes
-
-There are no classes defined in this file.
-
-#### Functions
-
-There are no functions defined in this file.
+| `darkMode` | `["class"]` | Enables dark mode based on a class applied to the root element. |
+| `content` | Array of file paths | Specifies the files where Tailwind CSS classes should be detected. |
+| `theme` | Object | Customizes the default Tailwind CSS theme. |
+| `plugins` | Array | Adds additional plugins to Tailwind CSS, such as `tailwindcss-animate` for animations. |
 
 #### Notes
 
-- The `withUt` function is used to integrate Uploadthing with Tailwind CSS, ensuring that any custom utilities provided by Uploadthing are available in the project.
-- The `theme` section allows for extensive customization of the default Tailwind CSS theme, including colors, spacing, and animations.
-- Ensure that any custom CSS variables (e.g., `--border`, `--primary`) are defined in your CSS or a global stylesheet to avoid runtime errors.
+- The `withUt` function is a custom utility that enhances Tailwind CSS with additional features. Ensure it is properly installed and configured in your project.
+- The `theme` section includes custom colors, border radii, keyframes, and animations to maintain a consistent look and feel.
+- The `content` array should be updated if new directories or file types are added to the project.
+- The `plugins` array includes `tailwindcss-animate`, which enables CSS animations using Tailwind's utility classes.
 
 ---
 
@@ -776,38 +764,39 @@ There are no functions defined in this file.
 
 #### Module Overview
 
-This file configures the TypeScript compiler for the LMS application. It sets compiler options, module resolution, and includes/excludes specific files for compilation.
+This file configures the TypeScript compiler for the LMS application. It sets various compiler options to ensure the codebase compiles correctly and adheres to best practices for TypeScript development.
 
 #### Dependencies
 
-- **TypeScript**: The primary dependency, used for compiling and type-checking TypeScript files.
+- **TypeScript**: The primary dependency, used for compiling and type-checking the codebase.
+- **Next.js Plugin**: Custom plugin to integrate with Next.js for enhanced module resolution.
 
 #### Configuration
 
 | Setting | Purpose |
-| --- | --- |
+|---------|---------|
 | `target` | Sets the ECMAScript target version (`es5`). |
-| `lib` | Includes library files for DOM, DOM iterable extensions, and ESNext features. |
+| `lib` | Includes DOM and ESNext libraries for type definitions. |
 | `allowJs` | Allows JavaScript files to be compiled. |
-| `skipLibCheck` | Skips type checking of all declaration files (`.d.ts`). |
+| `skipLibCheck` | Skips type checking of all declaration files. |
 | `strict` | Enables all strict type-checking options. |
 | `forceConsistentCasingInFileNames` | Ensures consistent casing in file names. |
 | `noEmit` | Prevents the compiler from emitting output files. |
-| `esModuleInterop` | Enables interoperability between CommonJS and ES modules. |
-| `module` | Sets the module code generation mode (`esnext`). |
-| `moduleResolution` | Specifies module resolution preference (`bundler`). |
-| `resolveJsonModule` | Allows importing `.json` files. |
-| `isolatedModules` | Ensures each file can be transpiled without relying on other files. |
-| `jsx` | Sets JSX code generation mode (`preserve`). |
+| `esModuleInterop` | Enables interoperability between CommonJS and ES Modules. |
+| `module` | Sets the module code generation to ESNext. |
+| `moduleResolution` | Uses the bundler for module resolution. |
+| `resolveJsonModule` | Allows importing JSON modules. |
+| `isolatedModules` | Ensures each file is treated as a module. |
+| `jsx` | Preserves JSX syntax. |
 | `incremental` | Enables incremental compilation. |
-| `plugins` | Adds custom plugins, such as `next`. |
-| `paths` | Sets path mappings for aliases, like `@/*` to `./*`. |
+| `paths` | Maps `@/*` to the root directory. |
 
 #### Notes
 
-- `noEmit` is set to `true`, meaning this configuration file does not produce any compiled output directly.
-- `isolatedModules` ensures that each file is compiled independently, which can help with tree-shaking and module bundling.
-- The `paths` setting allows for cleaner imports using aliases, such as `import something from '@/path'`.
+- `noEmit: true` means this configuration file does not produce any output files; it's meant to be used by the TypeScript compiler.
+- `isolatedModules` ensures that each file is treated as a standalone module, which can help with tree-shaking and module bundling.
+- The `paths` setting is crucial for resolving aliases, making imports cleaner and more manageable.
+- `incremental` enables faster rebuilds by only compiling changed files.
 
 ---
 
@@ -820,7 +809,7 @@ This file configures the TypeScript compiler for the LMS application. It sets co
 
 #### Module Overview
 
-This file defines the `getAnalytics` function, which fetches course data from the backend and calculates analytics like total revenue and total sales for a given user.
+This file defines the `getAnalytics` function, which fetches course data from the backend and calculates analytics such as total revenue and total sales for a given user.
 
 #### Dependencies
 
@@ -832,13 +821,14 @@ This file defines the `getAnalytics` function, which fetches course data from th
 
 | Function | Parameters | Returns | Description |
 | --- | --- | --- | --- |
-| `getAnalytics` | `userId: string` | `Promise<{ data: Array<{ name: string, total: number }>, totalRevenue: number, totalSales: number }>` | Fetches course data and calculates total revenue and total sales for the given user. |
+| `getAnalytics` | `userId: string` | `Promise<{ data: Array<{ name: string, total: number }>, totalRevenue: number, totalSales: number }>` | Fetches course data and calculates total revenue and sales for the specified user. |
 
 #### Notes
 
-- The function fetches course data from the backend and groups it by course title.
-- It calculates the total revenue by multiplying the number of purchased instances of each course by its price.
-- In case of an error, it returns an empty data array and zero for total revenue and total sales.
+- The function makes a single GET request to fetch all courses.
+- It calculates the total revenue by summing up the number of purchased courses multiplied by their price.
+- It calculates total sales by counting the number of purchased courses.
+- In case of an error, it returns an empty analytics object with zero values for total revenue and sales.
 
 ---
 
@@ -847,31 +837,31 @@ This file defines the `getAnalytics` function, which fetches course data from th
 
 #### Overview
 
-# File: `lms-app/actions/get-chapters.ts`
+# `lms-app/actions/get-chapters.ts`
 
 #### Module Overview
 
-This file defines an asynchronous function `getChapters` that fetches course and chapter data from the backend. It takes user, chapter, and course identifiers, and returns a structured object containing the course, chapter, and related data.
+This file defines the `getChapters` function, which fetches course and chapter data from the backend, including information about whether the user has purchased the course, if the chapter is free, and if the user has completed it. It also retrieves the next chapter and any attachments.
 
 #### Dependencies
 
 | Import | Purpose |
-| ------ | ------- |
-| `axios` | HTTP client for making requests to the backend. |
-| `console.error` | For logging errors. |
+|--------|---------|
+| `axios` | Makes HTTP requests to the backend. |
+| `console.error` | Logs errors to the console. |
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
-| -------- | ---------- | ------- | ----------- |
-| `getChapters` | `{ userId: string, chapterId: string, courseId: string }` | `Promise<{ course: any, chapter: any, muxData: string | null, attachments: string[], nextChapter: {_id: string} | null, isCompleted: boolean | null, purchased: boolean | null }>` | Fetches and returns course and chapter data based on the provided IDs. |
+|----------|------------|---------|-------------|
+| `getChapters` | `{ userId: string, chapterId: string, courseId: string }` | `Promise<{ course: any, chapter: any, muxData: string | null, attachments: string[], nextChapter: {_id: string} | null, isCompleted: boolean | null, purchased: boolean | null }>` | Fetches course and chapter data from the backend and returns an object with the relevant information. |
 
 #### Notes
 
-- The function assumes that the backend environment variable `BACK_END_URL` is set.
-- If either the course or chapter is not found, an error is thrown.
-- The function handles both free and purchased chapters, providing different data based on the user's purchase status.
-- Always handle the returned `null` values for optional properties like `chapter`, `nextChapter`, and `muxData`.
+- The function assumes that `process.env.BACK_END_URL` is set to the correct backend URL.
+- If either the course or chapter is not found, the function throws an error and returns default values.
+- The `attachments` array is only populated if the user has purchased the course.
+- The `nextChapter` is determined by the current chapter's index in the chapters array. If the current chapter is the last one, `nextChapter` will be `null`.
 
 ---
 
@@ -882,29 +872,27 @@ This file defines an asynchronous function `getChapters` that fetches course and
 
 # `lms-app/actions/get-courses.ts`
 
-#### Module Overview
-
-This file defines the `getCourses` function, which fetches a list of courses from the backend, optionally filtered by category or title, and enriches each course with progress data and chapter length.
+This file defines the `getCourses` function, which fetches a list of courses from the backend, optionally filtered by title or category, and enriches each course with progress information.
 
 #### Dependencies
 
 | Import | Purpose |
-|--------|---------|
+| --- | --- |
 | `axios` | HTTP client for making requests to the backend. |
-| `getProgress` | Function from `get-progress.ts` that calculates the progress of a course for a user. |
+| `getProgress` | Function from `get-progress.ts` that fetches progress data for a user and course. |
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
-|----------|------------|---------|-------------|
-| `getCourses` | `{ userId: string; title?: string; categoryId?: string }` | `Promise<Array<{ _id: string; purchased: { [key: string]: boolean }; categoryId: string; progress?: number; chaptersLength: number; category: string }>>` | Fetches courses from the backend, enriches them with progress and chapter length data, and returns the list. |
+| --- | --- | --- | --- |
+| `getCourses` | `{ userId: string; title?: string; categoryId?: string }` | `Promise<Array<{ _id: string; purchased: { [key: string]: boolean }; categoryId: string; progress: number; chaptersLength: number; category: string }>>` | Fetches courses from the backend, filters by publication status, and enriches each course with progress and category information. |
 
 #### Notes
 
-- The function uses environment variables to construct URLs for backend requests.
+- The function uses environment variables to construct the backend URL.
+- It assumes that the backend API returns data in a specific format.
 - Error handling is minimal; it logs the error and returns an empty array.
-- The function assumes that the backend is correctly handling requests and returning valid data.
-- Progress and chapter length data are only fetched if the user has not purchased the course.
+- The function makes multiple asynchronous calls to the backend, which could be optimized for performance.
 
 ---
 
@@ -915,33 +903,28 @@ This file defines the `getCourses` function, which fetches a list of courses fro
 
 # lms-app/actions/get-dashboard-courses.ts
 
-This file defines an asynchronous function `GetDashboardCourses` that fetches and processes a user's courses from the backend, categorizing them into completed and in-progress courses.
+#### Module Overview
+
+This file defines the `GetDashboardCourses` function, which fetches and processes a user's purchased courses from the backend, categorizing them into completed and in-progress lists.
 
 #### Dependencies
 
-| Import | Description |
+| Import | Purpose |
 | --- | --- |
 | `axios` | HTTP client for making requests to the backend. |
-| `getProgress` | Function to retrieve the progress of a course for a user. |
+| `getProgress` | Utility function to get the progress of a course for a user. |
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
 | --- | --- | --- | --- |
-| `GetDashboardCourses` | `userId: string` | `Promise<DashboardCourses>` | Fetches and processes the user's courses into completed and in-progress lists. |
-
-#### Types
-
-| Type | Description |
-| --- | --- |
-| `DashboardCourses` | A type representing the structure of the returned data, containing arrays of completed and in-progress courses. |
+| `GetDashboardCourses` | `userId: string` | `Promise<DashboardCourses>` | Fetches and processes a user's purchased courses into completed and in-progress lists. |
 
 #### Notes
 
-- The function relies on environment variables to construct backend URLs.
-- Error handling is minimal; it logs the error and returns empty arrays if something goes wrong.
-- The `getProgress` function is used to determine the progress of each course for the user.
-- The `categories` data is fetched once and used to enrich each course with its category name.
+- The function relies on environment variables to construct API URLs.
+- Error handling logs the error message but returns an empty list of courses in case of failure.
+- The `DashboardCourses` type is used to define the shape of the returned data.
 
 ---
 
@@ -954,25 +937,25 @@ This file defines an asynchronous function `GetDashboardCourses` that fetches an
 
 #### Module Overview
 
-This file defines the `getProgress` function, which calculates a user's progress in a given course by querying the backend API for published chapters and determining which ones the user has completed.
+This file defines a function `getProgress` that calculates a user's progress in a course by fetching published chapters and determining which ones the user has completed.
 
 #### Dependencies
 
 | Import | Purpose |
 | --- | --- |
-| `axios` | HTTP client for making API requests to the backend. |
+| `axios` | HTTP client for making requests to the backend API. |
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
 | --- | --- | --- | --- |
-| `getProgress` | `userId: string`, `courseId: string` | `Promise<number[]>` | Fetches published chapters for a course and calculates the progress percentage based on completed chapters by the user. |
+| `getProgress` | `userId: string`, `courseId: string` | `Promise<number[]>` | Fetches published chapters for a given course and calculates the user's progress as a percentage. Returns an array with the total number of chapters and the progress percentage. |
 
 #### Notes
 
-- The function returns an array with two elements: the total number of published chapters and the progress percentage.
-- If an error occurs during the API request, it logs the error and returns `[0, 0]`.
-- The progress percentage is calculated as the ratio of completed chapters to total published chapters, multiplied by 100.
+- The function handles errors by logging them and returning default values `[0, 0]`.
+- The backend URL is fetched from environment variables.
+- The progress percentage is calculated based on completed chapters for the user.
 
 ---
 
@@ -983,30 +966,41 @@ This file defines the `getProgress` function, which calculates a user's progress
 
 # `lms-app/app/globals.css`
 
-This file defines the global CSS styles for the LMS application, setting up base styles, color themes, and importing necessary third-party styles.
+This file defines the global styles and theming for the LMS application. It sets up base styles, custom properties for theming, and imports necessary styles from external libraries.
 
 #### Dependencies
 
-- `@tailwind base;`, `@tailwind components;`, `@tailwind utilities;`: These imports bring in the base, components, and utilities provided by Tailwind CSS, a utility-first CSS framework.
-
-- `@import "~@uploadthing/react/styles.css";`: Imports styles from the `@uploadthing/react` package, likely for handling file uploads.
+- `@tailwindcss/forms`: Provides form styling utilities.
+- `@uploadthing/react/styles.css`: Imports styles for the upload component.
 
 #### Classes
 
 | Class | Purpose | Key Methods |
 |-------|---------|-------------|
-| `:root` | Sets global CSS variables for light theme. | N/A |
-| `.dark` | Sets global CSS variables for dark theme. | N/A |
+| `:root` | Defines global CSS variables for light theme. | N/A |
+| `.dark` | Defines global CSS variables for dark theme. | N/A |
 
 #### Configuration
 
-This file uses Tailwind CSS's `@apply` directive to apply utility classes directly in CSS, streamlining the styling process.
+| Variable | Purpose |
+|----------|---------|
+| `--background` | Sets the background color. |
+| `--foreground` | Sets the text color. |
+| `--primary` | Sets the primary color. |
+| `--secondary` | Sets the secondary color. |
+| `--muted` | Sets the muted color. |
+| `--accent` | Sets the accent color. |
+| `--destructive` | Sets the destructive color. |
+| `--border` | Sets the border color. |
+| `--input` | Sets the input field color. |
+| `--ring` | Sets the focus ring color. |
+| `--radius` | Sets the border radius. |
 
 #### Notes
 
-- The CSS variables defined in `:root` and `.dark` are used throughout the application to maintain a consistent theme. Changing these variables will update the corresponding styles globally.
-- The `@layer base` directive is used to ensure these styles are applied before other styles, providing a solid base for the application's design.
-- Ensure any new styles or variables added here are also considered in the light and dark themes to maintain consistency.
+- The CSS variables defined in `:root` and `.dark` are used throughout the application to maintain consistent theming.
+- Ensure that any new components respect these global styles and use the defined CSS variables for theming.
+- When adding new styles, consider if they should be added to the global stylesheet or if they are specific enough to be scoped within a component.
 
 ---
 
@@ -1019,43 +1013,42 @@ This file uses Tailwind CSS's `@apply` directive to apply utility classes direct
 
 #### Module Overview
 
-This file defines the root layout component for the application. It sets up the global context providers for authentication and UI notifications, applies a global font, and wraps the children components in necessary providers.
+This file defines the root layout component for the application. It sets up the global context providers and applies the default styling using the `Inter` font. It wraps the entire application content in necessary providers for authentication and UI feedback.
 
 #### Dependencies
 
 | Import | Purpose |
 | --- | --- |
 | `globals.css` | Global styles for the application. |
-| `Metadata` | Type for metadata configuration. |
-| `Inter` | Google font provider for the application. |
-| `ClerkProvider` | Context provider for authentication. |
-| `ToasterProvider` | Context provider for UI notifications. |
+| `Metadata` | Type for defining metadata for the Next.js application. |
+| `Inter` | Google font for the application's default text styling. |
+| `ClerkProvider` | Context provider for authentication using Clerk. |
+| `ToasterProvider` | Context provider for toast notifications. |
 | `ConfettiProvider` | Context provider for confetti animations. |
 
 #### Classes
 
 | Class | Purpose | Key Methods |
 | --- | --- | --- |
-| `inter` | Instance of the `Inter` font | N/A |
+| `inter` | Instance of the `Inter` font with specified subsets. | N/A |
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
 | --- | --- | --- | --- |
-| `RootLayout` | `children` (`React.ReactNode`) | `JSX.Element` | Renders the root layout with global providers and the provided children. |
+| `RootLayout` | `children` (`React.ReactNode`) | `JSX.Element` | Main layout component wrapping the entire application content with necessary providers and default styling. |
 
 #### Configuration
 
 | Configuration | Purpose |
 | --- | --- |
-| `metadata` | Defines the metadata for the application. |
+| `metadata` | Defines default metadata for the application, including title and description. |
 
 #### Notes
 
-- The `ClerkProvider` wraps the entire application to provide authentication context.
-- The `ToasterProvider` and `ConfettiProvider` are used for UI notifications and animations respectively.
-- The global font `Inter` is applied to the body of the HTML.
-- The `metadata` object defines the title and description of the application.
+- The `RootLayout` component must be the top-level component in the application to ensure all pages and components receive the necessary context providers.
+- The `ClerkProvider` and other context providers should not be nested within any other components to avoid scope issues.
+- Ensure that the `children` prop passed to `RootLayout` includes the main content of the application.
 
 ---
 
@@ -1066,30 +1059,31 @@ This file defines the root layout component for the application. It sets up the 
 
 # lms-app/app/(auth)/layout.tsx
 
-This file defines a functional component `AuthLayout` that serves as a layout wrapper for authentication-related pages. It centers its children both vertically and horizontally within a full-height div.
+This file defines a React component, `AuthLayout`, used to layout children elements within a centered flex container. It exists to provide a consistent layout for authentication-related pages.
 
 #### Dependencies
 
 | Import | Purpose |
 | --- | --- |
-| `React` | Provides the React library for building the component. |
+| `React` | Provides the React library for building UI components. |
 
 #### Classes
 
 | Class | Purpose | Key Methods |
 | --- | --- | --- |
-| None | N/A | N/A |
+| `AuthLayout` | A functional React component that centers its children within a flex container. | N/A |
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
 | --- | --- | --- | --- |
-| `AuthLayout` | `{children: React.ReactNode}` | `JSX.Element` | A functional component that renders centered children within a full-height div. |
+| `AuthLayout` | `{children: React.ReactNode}` | `JSX.Element` | A functional component that renders its children within a centered flex container. |
 
 #### Notes
 
-- The `AuthLayout` component is designed to provide a simple, centered layout for any children components passed to it.
-- This layout is specifically intended for use within authentication-related pages, ensuring a consistent and user-friendly interface.
+- The `AuthLayout` component is designed to center its children both vertically and horizontally.
+- It uses Tailwind CSS classes (`h-full`, `flex`, `items-center`, `justify-center`) for styling.
+- This component is intended to be used in authentication-related routes to provide a uniform layout.
 
 ---
 
@@ -1100,31 +1094,31 @@ This file defines a functional component `AuthLayout` that serves as a layout wr
 
 # Module Overview
 
-This file defines the `SignUpPage` component, which renders the sign-in form using the `SignIn` component from the `@clerk/nextjs` library. It exists to provide a user interface for users to sign in to the application.
+This file defines the `SignUpPage` component, which is used for handling user sign-in through the Clerk authentication service. It provides a simple interface for users to sign in to the application.
 
 #### Dependencies
 
-| Import | Purpose |
-| --- | --- |
-| `@clerk/nextjs` | Provides the `SignIn` component for handling authentication. |
+| Import | Purpose | Description |
+| --- | --- | --- |
+| `SignIn` | Authentication | Component from `@clerk/nextjs` for handling sign-in functionality. |
 
 #### Classes
 
 | Class | Purpose | Key Methods |
 | --- | --- | --- |
-| `SignUpPage` | The main component for the sign-in page. | N/A |
+| `SignUpPage` | Sign-in page component | None |
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
 | --- | --- | --- | --- |
-| `SignUpPage` | None | JSX element | Renders the sign-in form. |
+| `SignUpPage` | None | JSX element | Renders the `SignIn` component for user authentication. |
 
 #### Notes
 
-- The `SignIn` component handles all authentication logic, including form submission and state management.
-- Ensure that the `@clerk/nextjs` package is installed and configured correctly in the project.
-- This component does not contain any custom logic beyond rendering the `SignIn` component.
+- The `SignIn` component handles all the necessary logic for user authentication.
+- Ensure that Clerk is correctly configured in your project for this component to work.
+- This component does not include any additional logic or styling; it's a straightforward wrapper for the `SignIn` component.
 
 ---
 
@@ -1135,31 +1129,30 @@ This file defines the `SignUpPage` component, which renders the sign-in form usi
 
 # Module Overview
 
-This file defines the `SignUpPage` component, which renders the sign-up form using the `SignUp` component from the `@clerk/nextjs` library. It exists to provide a user interface for new users to create an account on the platform.
+This file defines the `SignUpPage` component, which renders the sign-up form using the `SignUp` component from `@clerk/nextjs`. It exists to handle user sign-up functionality within the application.
 
 #### Dependencies
 
 | Import | Purpose |
 | --- | --- |
-| `SignUp` | A pre-built component from `@clerk/nextjs` that handles the sign-up process. |
+| `SignUp` | A component from `@clerk/nextjs` for rendering the sign-up form. |
 
 #### Classes
 
 | Class | Purpose | Key Methods |
 | --- | --- | --- |
-| `SignUpPage` | The main functional component that renders the sign-up form. | None |
+| `SignUpPage` | The main component for the sign-up page. | None |
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
 | --- | --- | --- | --- |
-| `SignUpPage` | None | JSX element | Renders the `SignUp` component for user sign-up. |
+| `SignUpPage` | None | JSX element | Renders the `SignUp` component. |
 
 #### Notes
 
-- The `SignUp` component handles all the logic for user registration, including form validation and API interactions.
-- Ensure that the `@clerk/nextjs` package is installed and configured correctly in your project for this component to work.
-- This page is part of the authentication routes and should be protected or accessible based on your application's routing and authorization logic.
+- The `SignUp` component handles all sign-up logic internally.
+- Ensure that the `@clerk/nextjs` package is installed and configured correctly for this to work.
 
 ---
 
@@ -1172,42 +1165,42 @@ This file defines the `SignUpPage` component, which renders the sign-up form usi
 
 #### Module Overview
 
-This file defines the layout component for a specific course in the Learning Management System (LMS). It integrates the course sidebar and navbar, fetches course and chapter data, and ensures the user is authenticated before rendering the layout.
+This file defines the layout for a specific course within the Learning Management System (LMS). It integrates the course-specific sidebar and navbar, fetches course and chapter data from the backend, and ensures the user is authenticated before rendering the layout.
 
 #### Dependencies
 
 | Import | Purpose |
 | --- | --- |
 | `auth` | Authenticates the user using Clerk. |
-| `axios` | Makes HTTP requests to fetch course and chapter data. |
+| `axios` | Makes HTTP requests to the backend API. |
 | `redirect` | Redirects unauthenticated users to the home page. |
-| `CourseSidebar` | Displays the sidebar for the course. |
-| `CourseNavbar` | Displays the navigation bar for the course. |
+| `CourseSidebar` | Component for displaying the sidebar with course chapters. |
+| `CourseNavbar` | Component for displaying the navigation bar with course details. |
 
 #### Classes
 
 | Class | Purpose | Key Methods |
 | --- | --- | --- |
-| `CourseLayout` | Main layout component for a course. | N/A |
+| N/A | N/A | N/A |
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
 | --- | --- | --- | --- |
-| `CourseLayout` | `{ children: React.ReactNode; params: { courseId: string } }` | JSX element | Renders the layout with the sidebar, navbar, and main content area. |
+| `CourseLayout` | `{ children: React.ReactNode; params: { courseId: string } }` | JSX | Renders the layout for a specific course, including the sidebar and navbar, and fetches course and chapter data. |
 
 #### Configuration or Constants
 
-| Constant | Purpose |
+| Variable | Purpose |
 | --- | --- |
 | `process.env.BACK_END_URL` | Base URL for the backend API. |
 
 #### Notes
 
-- Ensure the `userId` is available before fetching course and chapter data to avoid errors.
-- The layout conditionally renders the sidebar and navbar based on the viewport size.
-- Unauthenticated users are redirected to the home page if no `userId` is present.
-- The `CourseNavbar` and `CourseSidebar` components are placeholders for actual components that will be implemented later.
+- Ensure the `courseId` parameter is correctly passed to the `CourseLayout` component.
+- The `userId` is obtained from the `auth()` function and used to fetch chapter data.
+- Unauthenticated users are redirected to the home page if `userId` is not present.
+- The layout uses fixed positioning for the navbar and sidebar to ensure they remain visible during scrolling.
 
 ---
 
@@ -1218,30 +1211,36 @@ This file defines the layout component for a specific course in the Learning Man
 
 # Module Overview
 
-This file, `lms-app/app/(course)/courses/[courseId]/page.tsx`, handles the initial navigation for a specific course in the Learning Management System (LMS). When a user accesses a course page, it fetches the published chapters for that course and redirects to the first published chapter.
+This file, `lms-app/app/(course)/courses/[courseId]/page.tsx`, handles the redirection logic for a specific course. When a user navigates to a course page, it fetches the published chapters for that course and redirects to the first chapter's page.
 
 # Dependencies
 
 | Import | Purpose |
 | --- | --- |
-| `axios` | Used for making HTTP requests to fetch course chapters. |
-| `redirect` | A utility from Next.js to handle client-side navigation. |
+| `axios` | HTTP client for making API requests. |
+| `redirect` | Utility from Next.js to handle client-side redirections. |
 
 # Classes
 
 | Class | Purpose | Key Methods |
 | --- | --- | --- |
-| None | N/A | N/A |
+| N/A | N/A | N/A |
 
 # Functions
 
 | Function | Parameters | Returns | Description |
 | --- | --- | --- | --- |
-| `CourseIdPage` | `{ params: { courseId: string } }` | `void` | Fetches published chapters for the given course ID and redirects to the first chapter. |
+| `CourseIdPage` | `{ params: { courseId: string } }` | `void` | Fetches published chapters for a course and redirects to the first chapter's page. |
+
+# Configuration
+
+| Variable | Purpose |
+| --- | --- |
+| `process.env.BACK_END_URL` | Base URL for the backend API. |
 
 # Notes
 
-- The file uses environment variables to construct the API URL.
+- The file uses environment variables to fetch data from the backend.
 - If no chapters are published for the course, the user is redirected to the home page.
 - Ensure that the `BACK_END_URL` environment variable is correctly set in the deployment environment.
 
@@ -1256,39 +1255,42 @@ This file, `lms-app/app/(course)/courses/[courseId]/page.tsx`, handles the initi
 
 #### Module Overview
 
-This file defines a React component `CourseMobileSidebar` that renders a mobile-friendly sidebar for course navigation. It uses a slide-out menu (`Sheet`) to display the course sidebar, which lists course chapters and their completion status.
+This file defines the `CourseMobileSidebar` component, which renders a mobile-friendly sidebar for navigating a course in the Learning Management System (LMS). It uses a slide-out sheet to display the course sidebar, accessible via a menu icon.
 
 #### Dependencies
 
-| Import | Source | Purpose |
-| --- | --- | --- |
-| `Menu` | `lucide-react` | Icon used for the sidebar trigger. |
-| `Sheet`, `SheetContent`, `SheetTrigger` | `@/components/ui/sheet` | Components for the slide-out menu. |
-| `CourseSidebar` | `./course-sidebar` | Subcomponent that displays the course details and chapters. |
-| `auth` | `@clerk/nextjs` | Provides the current user's ID. |
+| Import | Purpose |
+| --- | --- |
+| `Menu` | Icon component from `lucide-react` for the sidebar trigger. |
+| `Sheet`, `SheetContent`, `SheetTrigger` | Components from `@/components/ui/sheet` for the slide-out sidebar. |
+| `CourseSidebar` | Subcomponent that displays the course details and chapters. |
+| `auth` | Hook from `@clerk/nextjs` to get the current user's ID. |
 
 #### Classes
 
 | Class | Purpose | Key Methods |
 | --- | --- | --- |
-| `CourseMobileSidebar` | Main component for the mobile sidebar. | None |
+| N/A | N/A | N/A |
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
 | --- | --- | --- | --- |
-| `CourseMobileSidebar` | `courseMobileSidebarProps` | JSX element | Renders the mobile sidebar with the course and chapters. |
+| `CourseMobileSidebar` | `courseMobileSidebarProps` | JSX element | Renders the mobile sidebar for a course. |
 
 #### Configuration or Constants
 
-- None
+| Name | Type | Description |
+| --- | --- | --- |
+| N/A | N/A | N/A |
 
 #### Notes
 
-- The `Sheet` component is used to create a slide-out menu that is only visible on mobile devices (`md:hidden`).
-- The `SheetTrigger` uses the `Menu` icon to toggle the sidebar.
-- The `SheetContent` contains the `CourseSidebar` component, which receives the `userId`, `course`, and `chapters` as props.
-- The `userId` is fetched using the `auth` hook from `@clerk/nextjs`.
+- The `Sheet` component is used to create a slide-out sidebar.
+- The `SheetTrigger` is a menu icon that only appears on mobile (`md:hidden`).
+- The `CourseSidebar` component is passed the current user's ID (`userId`), the course object, and the chapters array.
+- The sidebar is positioned on the left side (`side="left"`).
+- The `SheetContent` has a fixed width of `w-72` and a white background (`bg-white`).
 
 ---
 
@@ -1301,33 +1303,34 @@ This file defines a React component `CourseMobileSidebar` that renders a mobile-
 
 #### Module Overview
 
-This file defines the `CourseNavbar` component, which renders the navigation bar for a specific course. It includes the mobile sidebar and the navigation routes for the course.
+This file defines the `CourseNavbar` component, which renders the navigation bar for a specific course. It integrates the `CourseMobileSidebar` and `NavbarRoutes` components to provide a cohesive navigation experience for course-related actions.
 
 #### Dependencies
 
-| Import | Purpose |
-| --- | --- |
-| `NavbarRoutes` | Component for rendering navigation routes. |
-| `CourseMobileSidebar` | Component for displaying the mobile sidebar for the course. |
+- **`NavbarRoutes`**: A component that provides navigation routes specific to the course.
+- **`CourseMobileSidebar`**: A component that renders a mobile sidebar for course navigation.
 
 #### Classes
 
 | Class | Purpose | Key Methods |
 | --- | --- | --- |
-| `CourseNavbar` | Main component for the course navigation bar. | N/A |
+| `CourseNavbar` | Main component for the course navigation bar | N/A |
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
 | --- | --- | --- | --- |
-| `CourseNavbar` | `course` | N/A | Course object containing title and purchased status. `chapters` | Array of chapters with details like ID, title, completion status, and purchase status. | JSX element | Renders the navigation bar with the mobile sidebar and navigation routes. |
+| `CourseNavbar` | `course` (course object), `chapters` (array of chapter objects) | JSX element | Renders the navigation bar with the mobile sidebar and navigation routes |
+
+#### Configuration or Constants
+
+None
 
 #### Notes
 
-- The `CourseNavbar` component receives `course` and `chapters` as props.
-- The `CourseMobileSidebar` component is conditionally rendered within `CourseNavbar`.
-- The `NavbarRoutes` component is always rendered within `CourseNavbar`.
-- The `progressCount` prop is commented out and not currently used in this component.
+- The `CourseNavbar` component expects `course` and `chapters` props to render correctly.
+- The `CourseMobileSidebar` component is conditionally rendered but commented out in the current implementation.
+- Ensure that the `course` and `chapters` props are correctly passed from the parent component to maintain the navigation context.
 
 ---
 
@@ -1340,15 +1343,15 @@ This file defines the `CourseNavbar` component, which renders the navigation bar
 
 #### Module Overview
 
-This file defines a `CourseSidebarItem` component that represents an individual course item in the sidebar of a course module. It displays an icon, label, and conditionally changes styles based on the course's completion and lock status.
+This file defines a `CourseSidebarItem` component that represents an individual course item in the sidebar of the course management system. It displays an icon, course label, and handles navigation to the course chapters when clicked.
 
 #### Dependencies
 
 | Import | Purpose |
 | --- | --- |
-| `cn` | Utility function for conditionally joining class names. |
-| `CheckCircle`, `Lock`, `PlayCircle` | Icons used to visually represent the course status. |
-| `usePathname`, `useRouter` | Hooks for navigation and determining the current pathname. |
+| `cn` | Utility function for conditional class names. |
+| `CheckCircle`, `Lock`, `PlayCircle` | Icons used to visually represent course states. |
+| `usePathname`, `useRouter` | Hooks for pathname and routing functionality. |
 
 #### Classes
 
@@ -1360,20 +1363,19 @@ This file defines a `CourseSidebarItem` component that represents an individual 
 
 | Function | Parameters | Returns | Description |
 | --- | --- | --- | --- |
-| `CourseSidebarItem` | `_id`, `label`, `isCompleted`, `isLocked`, `courseId` | JSX element | Renders a clickable course item with appropriate styling and navigation. |
+| `CourseSidebarItem` | `_id`, `label`, `isCompleted`, `isLocked`, `courseId` | `JSX.Element` | Renders a clickable course item with appropriate icons and navigation. |
 
-#### Configuration or Constants
+#### Configuration
 
-| Name | Type | Description |
-| --- | --- | --- |
-| `Icon` | React Component | Conditionally selects an icon based on `isLocked` and `isCompleted` flags. |
+| Configuration | Description |
+| --- | --- |
+| `Icon` | Conditionally selects an icon based on `isLocked` and `isCompleted` states. |
 
 #### Notes
 
-- The `Icon` component switches between `Lock`, `CheckCircle`, and `PlayCircle` based on the course's lock and completion status.
-- The button's `onClick` handler navigates to the course's chapter list when clicked.
-- Conditional classes are applied to change the button's appearance based on its active state, completion status, and lock status.
-- The `isActive` flag determines if the current path includes the course's `_id`, indicating the active course item.
+- The `CourseSidebarItem` component uses conditional rendering to determine the appearance based on the course state (`isCompleted`, `isLocked`, `isActive`).
+- The `onClick` handler navigates to the course chapters page using the `router.push` method.
+- The component's styling changes based on the `isActive` and `isCompleted` states to provide visual feedback to the user.
 
 ---
 
@@ -1384,38 +1386,38 @@ This file defines a `CourseSidebarItem` component that represents an individual 
 
 # Module Overview
 
-The `course-sidebar.tsx` file defines the `CourseSidebar` component, which is a sidebar component used in the course pages. It displays the course title, a progress bar for completed chapters, and a list of chapters with their completion status.
+The `course-sidebar.tsx` file defines the `CourseSidebar` component, which displays a sidebar for a course in the LMS application. It shows the course title, progress bar, and a list of chapters with their completion status.
 
-# Dependencies
+#### Dependencies
 
 | Import | Description |
 | --- | --- |
 | `auth` from `@clerk/nextjs` | Provides authentication context. |
-| `redirect` from `next/navigation` | Redirects users to a different page. |
-| `CourseSidebarItem` from `./course-sidebar-item` | A component for displaying individual course sidebar items. |
-| `CourseProgress` from `@/components/course-progress` | A component for displaying the course progress bar. |
+| `redirect` from `next/navigation` | Redirects users if they are not authenticated. |
+| `CourseSidebarItem` | Component for rendering individual course sidebar items. |
+| `CourseProgress` | Component for displaying the course progress. |
 | `getPurchasedStatus`, `getCompletedChaptersCount`, `calculateProgress` from `@/utils/course-utils` | Utility functions for calculating course-related data. |
 
-# Classes
+#### Classes
 
 | Class | Purpose | Key Methods |
 | --- | --- | --- |
-| `CourseSidebar` | Displays the course sidebar with title, progress, and chapters. | N/A |
+| `CourseSidebar` | Displays the sidebar for a course. | N/A |
 
-# Functions
+#### Functions
 
 | Function | Parameters | Returns | Description |
 | --- | --- | --- | --- |
-| `getPurchasedStatus` | `course`, `userId` | `boolean` | Checks if the user has purchased the course. |
+| `getPurchasedStatus` | `course`, `userId` | `boolean` | Checks if a course is purchased by the user. |
 | `getCompletedChaptersCount` | `chapters`, `userId` | `number` | Counts the number of completed chapters by the user. |
-| `calculateProgress` | `completedChapters`, `totalChapters` | `number` | Calculates the progress percentage of completed chapters. |
+| `calculateProgress` | `completedChapters`, `totalChapters` | `number` | Calculates the progress percentage. |
 
-# Notes
+#### Notes
 
-- The `redirect` function is used to redirect unauthenticated users to the homepage.
-- The `CourseSidebarItem` component is used to render each chapter in the sidebar.
-- The `CourseProgress` component is used to display the progress bar.
-- Utility functions from `course-utils.ts` are used to calculate the purchase status, completed chapters count, and progress percentage.
+- Ensure that the `userId` is always available when using this component.
+- The `redirect` function will redirect unauthenticated users to the homepage.
+- The `CourseProgress` component only displays if the course is purchased.
+- The `CourseSidebarItem` component handles the display of individual chapters, including their completion status and whether they are locked.
 
 ---
 
@@ -1424,38 +1426,38 @@ The `course-sidebar.tsx` file defines the `CourseSidebar` component, which is a 
 
 #### Overview
 
-# `lms-app/app/(course)/courses/[courseId]/chapters/[chapterId]/page.tsx`
+# Module Overview
 
-This file defines the page component for a specific chapter within a course in the Learning Management System (LMS). It fetches chapter details, checks user authentication, and conditionally renders chapter content based on user status and course purchase.
+This file defines the `ChapterIdPage` component, which is a React component for displaying a specific chapter within a course on the Learning Management System (LMS) application. It fetches chapter data, checks user authentication, and conditionally renders various UI elements based on the user's purchase status and chapter completion.
 
 #### Dependencies
 
 | Import | Description |
-|--------|-------------|
-| `getChapters` | Action to fetch chapter details. |
+| --- | --- |
+| `getChapters` | Action to fetch chapter data. |
 | `Banner` | Component to display status banners. |
 | `auth` | Authentication utility from `@clerk/nextjs`. |
 | `redirect` | Utility to redirect users from `next/navigation`. |
-| `VideoPlayer` | Custom component to play chapter videos. |
-| `CourseEnrollButton` | Custom component to enroll in a course. |
-| `Separator` | UI component to add visual separation. |
-| `Preview` | Component to preview chapter descriptions. |
+| `VideoPlayer` | Custom component for playing video content. |
+| `CourseEnrollButton` | Custom component for enrolling in a course. |
+| `Separator` | UI component for visual separation. |
+| `Preview` | Component to preview text content. |
 | `File` | Icon from `lucide-react`. |
-| `CourseProgressButton` | Custom component to track course progress. |
+| `CourseProgressButton` | Custom component for tracking course progress. |
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
-|----------|------------|---------|-------------|
-| `ChapterIdPage` | `{ params: { courseId: string; chapterId: string } }` | JSX | Main component rendering the chapter page. |
+| --- | --- | --- | --- |
+| `ChapterIdPage` | `{ params: { courseId: string; chapterId: string } }` | JSX Element | Renders the chapter page with video player, enrollment/progress buttons, and chapter details. |
 
 #### Notes
 
 - The component checks if the user is authenticated before proceeding. If not, it redirects to the homepage.
-- The `getChapters` action fetches necessary data for the chapter, including whether the chapter is free or requires purchase.
+- The `getChapters` action fetches necessary data for the chapter, including whether the chapter is locked or if the user has completed it.
 - Conditional rendering is used to show different UI elements based on the user's purchase status and chapter completion.
-- The `VideoPlayer` component is responsible for playing the chapter video and handles locked content if the user hasn't purchased the course.
-- Attachments are displayed if available, with links opening in a new tab.
+- The `VideoPlayer` component is responsible for playing the chapter's video content.
+- Attachments are displayed as links, opening in a new tab.
 
 ---
 
@@ -1466,34 +1468,40 @@ This file defines the page component for a specific chapter within a course in t
 
 # Module Overview
 
-This file defines a React component, `CourseEnrollButton`, which renders a button that allows users to enroll in a course. When clicked, it triggers an asynchronous API call to initiate the enrollment process and redirects the user to the payment page upon success.
+This file defines a React component, `CourseEnrollButton`, which renders a button that allows users to enroll in a course. When clicked, it triggers an API call to initiate the enrollment process and redirects the user to the checkout page upon success.
 
-# Dependencies
+#### Dependencies
 
-- **axios**: HTTP client for making API requests.
-- **useState**: Hook for managing state within functional components.
-- **Button**: UI component for rendering buttons.
-- **formatPrice**: Utility function for formatting prices.
-- **toast**: Library for displaying toast notifications.
+| Import | Purpose |
+| --- | --- |
+| `axios` | HTTP client for making API requests. |
+| `useState` | Hook to manage state within the component. |
+| `Button` | UI component for rendering the button. |
+| `formatPrice` | Utility function to format the course price. |
+| `toast` | Library for displaying toast notifications. |
 
-# Classes
+#### Classes
 
 | Class | Purpose | Key Methods |
 | --- | --- | --- |
-| None | N/A | N/A |
+| `CourseEnrollButton` | Main component for the enroll button. | N/A |
 
-# Functions
+#### Functions
 
 | Function | Parameters | Returns | Description |
 | --- | --- | --- | --- |
-| `CourseEnrollButton` | `courseId: string`, `price: number` | N/A | Renders an enroll button for a course. |
+| `onClick` | None | None | Handles the button click event, initiates enrollment API call, and manages loading state. |
 
-# Notes
+#### Configuration
 
-- The `CourseEnrollButton` component uses `axios` to make a POST request to initiate the enrollment process.
-- On success, it redirects the user to the URL provided in the API response.
-- On failure, it logs the error and displays a toast notification.
-- The button is disabled while the enrollment process is in progress to prevent multiple clicks.
+None
+
+#### Notes
+
+- The `onClick` function handles both success and error states for the API request.
+- The `formatPrice` utility is used to display the course price in a user-friendly format.
+- Error messages are logged to the console and a toast notification is shown to the user in case of failure.
+- The component uses the `useState` hook to manage the loading state of the button.
 
 ---
 
@@ -1504,32 +1512,33 @@ This file defines a React component, `CourseEnrollButton`, which renders a butto
 
 # Module Overview
 
-This file defines the `CourseProgressButton` component, which allows users to mark a chapter as completed or not completed within a course. It handles the UI interaction, state management, and API calls necessary to update the user's progress.
+This file defines the `CourseProgressButton` component, which allows users to mark a chapter as completed or not completed within a course. It provides a button that updates the user's progress and triggers visual feedback.
 
 #### Dependencies
 
 | Import | Purpose |
 | --- | --- |
-| `Button` | Provides a styled button component. |
-| `useConfettiStore` | Manages the confetti effect state. |
-| `axios` | Makes HTTP requests to update progress. |
-| `CheckCircle`, `XCircle` | Icons to indicate completion status. |
-| `useRouter` | Provides navigation capabilities. |
-| `useState` | Manages component state. |
-| `toast` | Displays success or error messages. |
+| `Button` | A UI button component from the project's design system. |
+| `useConfettiStore` | A custom hook to manage confetti animations. |
+| `axios` | A promise-based HTTP client for making requests to the API. |
+| `CheckCircle`, `XCircle` | Icons from the `lucide-react` library to indicate completion status. |
+| `useRouter` | A hook from Next.js for navigation and URL manipulation. |
+| `useState` | A React hook for managing component state. |
+| `toast` | A function from `react-hot-toast` for displaying notifications. |
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
 | --- | --- | --- | --- |
-| `CourseProgressButton` | `chapterId`, `courseId`, `isCompleted`, `nextChapterId` | JSX Element | Renders a button to mark a chapter as completed or not completed. |
+| `CourseProgressButton` | `chapterId`, `courseId`, `isCompleted`, `nextChapterId` | JSX Element | A button component to mark chapter progress. |
 
 #### Notes
 
-- The `isLoading` state is used to disable the button and show a loading indicator while the API call is in progress.
-- The `confetti` effect is triggered if the current chapter is marked as completed and there is no next chapter.
-- The `router.push` method navigates to the next chapter if it exists.
-- Error handling displays a toast message if the API call fails.
+- The `isCompleted` prop determines the button's text and icon.
+- The `nextChapterId` prop is used to navigate to the next chapter if it exists.
+- The component uses `axios` to send a POST request to update the chapter's progress.
+- The `useConfettiStore` hook is used to trigger a confetti animation when a chapter is marked as completed and there is no next chapter.
+- The `toast` function provides feedback to the user on the success or failure of the request.
 
 ---
 
@@ -1540,34 +1549,33 @@ This file defines the `CourseProgressButton` component, which allows users to ma
 
 # Module Overview
 
-The `video-player.tsx` file defines a React component for playing video content within a course chapter. It handles video playback, user progress tracking, and user interface feedback for loading and locked states.
+The `video-player.tsx` file defines the `VideoPlayer` component, which is used to play video content within a course chapter. It handles video playback, user interactions, and updates the user's progress upon video completion.
 
 #### Dependencies
 
 | Import | Description |
 | --- | --- |
 | `axios` | HTTP client for making requests to the backend. |
-| `MuxPlayer` | A React component for embedding Mux video player. |
+| `MuxPlayer` | A React component from `@mux/mux-player-react` for video playback. |
 | `Loader2`, `Lock` | Icons from `lucide-react` for loading and locked states. |
 | `useState` | React hook for managing component state. |
 | `cn` | Utility function from `@/lib/utils` for conditional class names. |
-| `useRouter` | Hook from `next/navigation` for programmatic navigation. |
-| `useConfettiStore` | Custom hook to manage confetti effects. |
+| `useRouter` | Hook from `next/navigation` for navigation and routing. |
+| `useConfettiStore` | Custom hook from `@/hooks/use-confetti-store` for confetti effects. |
 | `toast` | Function from `react-hot-toast` for displaying notifications. |
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
 | --- | --- | --- | --- |
-| `onEnd` | None | None | Handles the end of video playback, updates progress, and navigates to the next chapter if available. |
+| `onEnd` | None | None | Handles the logic when the video ends, updating progress and navigating to the next chapter if applicable. |
 
 #### Notes
 
-- The `onEnd` function assumes that the backend endpoint `/api/courses/${courseId}/chapters/${chapterId}/progress` is correctly set up to handle progress updates.
-- The component uses `axios` for making HTTP requests, which should be configured to handle CORS and error responses appropriately.
-- The `cn` function is used to conditionally apply CSS classes, which helps in managing dynamic styling.
-- Ensure that the `playbackId` provided is valid and corresponds to a valid video in the Mux video player.
-- The `isLocked` prop determines if the video player should display a locked state or not. If locked, the video cannot be played.
+- The `playbackId` prop is essential for initializing the MuxPlayer.
+- The `isLocked` prop determines if the video is locked and should display a lock icon.
+- The `completeOnEnd` prop is not used in the current implementation but could be utilized for additional logic.
+- Ensure that the API endpoint `/api/courses/${courseId}/chapters/${chapterId}/progress` is correctly set up to handle progress updates.
 
 ---
 
@@ -1580,13 +1588,13 @@ The `video-player.tsx` file defines a React component for playing video content 
 
 #### Module Overview
 
-This file defines the layout component for the dashboard section of the application. It integrates the `Navbar` and `Sidebar` components into a responsive layout, ensuring that the main content area adapts to the viewport size.
+This file defines the layout for the dashboard component of the LMS application. It integrates a `Navbar` and a `Sidebar` into the main layout, ensuring a consistent user interface across the dashboard.
 
 #### Dependencies
 
 | Import | Purpose |
 | --- | --- |
-| `useEffect`, `useState` | React hooks for managing side effects and state. |
+| `useEffect`, `useState` | React hooks for lifecycle management and state handling. |
 | `Navbar` | A component for the navigation bar at the top of the dashboard. |
 | `Sidebar` | A component for the sidebar on the left side of the dashboard. |
 
@@ -1600,13 +1608,13 @@ This file defines the layout component for the dashboard section of the applicat
 
 | Function | Parameters | Returns | Description |
 | --- | --- | --- | --- |
-| `DashboardLayout` | `{ children: React.ReactNode }` | `JSX.Element` | Renders the dashboard layout with a top `Navbar`, a left `Sidebar`, and a main content area. |
+| `DashboardLayout` | `{ children: React.ReactNode }` | `JSX.Element` | Renders the dashboard layout with a `Navbar`, `Sidebar`, and the provided children components. |
 
 #### Notes
 
-- The `DashboardLayout` component uses a state variable `domLoaded` to ensure that the layout only renders once the DOM is fully loaded.
-- The layout uses fixed positioning for the `Navbar` and `Sidebar` to maintain their visibility across different sections of the dashboard.
-- The `main` element adjusts its padding and margin based on the presence of the `Navbar` and `Sidebar` to ensure proper content display.
+- The `DashboardLayout` component uses a state variable `domLoaded` to ensure that the layout only renders after the initial DOM load.
+- The layout is responsive, hiding the sidebar on smaller screens and displaying it on medium and larger screens.
+- The `main` element adjusts its padding and margin based on the presence of the `Navbar` and `Sidebar`.
 
 ---
 
@@ -1619,36 +1627,36 @@ This file defines the layout component for the dashboard section of the applicat
 
 #### Module Overview
 
-This file defines the main dashboard page for the Learning Management System (LMS). It fetches the user's courses, displays progress and completion status, and renders a list of courses.
+This file defines the main dashboard page for the Learning Management System (LMS). It fetches the user's completed and in-progress courses and displays them using the `CoursesList` component. It also shows informational cards indicating the number of courses in progress and completed.
 
 #### Dependencies
 
 | Import | Purpose |
 | --- | --- |
-| `GetDashboardCourses` | Fetches the user's courses (completed and in progress) from the server. |
-| `CoursesList` | A component to display a list of courses. |
-| `auth` | Provides authentication information from Clerk. |
-| `CheckCircle`, `Clock` | Icons from `lucide-react` used in the `InfoCard` component. |
-| `redirect` | Utility from `next/navigation` to redirect users if they are not authenticated. |
-| `InfoCard` | A custom component to display information cards with icons and labels. |
+| `GetDashboardCourses` | Fetches the user's completed and in-progress courses. |
+| `CoursesList` | Displays a list of courses. |
+| `auth` | Provides authentication details from Clerk. |
+| `CheckCircle`, `Clock` | Icons used in the info cards. |
+| `redirect` | Redirects the user if not authenticated. |
+| `InfoCard` | Component to display info cards with icons and labels. |
 
 #### Classes
 
 | Class | Purpose | Key Methods |
 | --- | --- | --- |
-| `Dashboard` | Main component for the dashboard page. | None |
+| N/A | N/A | N/A |
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
 | --- | --- | --- | --- |
-| `Dashboard` | None | JSX | Renders the dashboard with progress and completed courses. |
+| `Dashboard` | N/A | JSX element | Fetches and displays the user's courses and info cards. |
 
 #### Notes
 
-- If `userId` is not available, the user is redirected to the home page.
-- The `GetDashboardCourses` function fetches both completed and in-progress courses.
-- The `InfoCard` component is used to display the number of courses in progress and completed with appropriate icons.
+- The `Dashboard` function checks if the user is authenticated. If not, it redirects to the home page.
+- The `GetDashboardCourses` function is used to fetch the user's completed and in-progress courses.
+- The `InfoCard` components display the number of courses in progress and completed.
 - The `CoursesList` component combines both completed and in-progress courses for display.
 
 ---
@@ -1662,32 +1670,36 @@ This file defines the main dashboard page for the Learning Management System (LM
 
 #### Module Overview
 
-This file defines a reusable `InfoCard` component that displays an icon, a label, and the number of associated items. It's used across the dashboard to provide quick insights into various data sets.
+This file defines a reusable `InfoCard` component used to display key information in a compact, visually appealing format. It takes an icon, a label, and a number of items, and optionally a variant, to provide contextual styling.
 
 #### Dependencies
 
 | Import | Purpose |
 | --- | --- |
-| `IconBadge` | A component that renders an icon with an optional badge. |
-| `LucideIcon` | A type representing icons from the `lucide-react` library. |
+| `IconBadge` | A component that displays an icon with a badge, optionally styled by a variant. |
+| `LucideIcon` | A type representing icons from the lucide-react library. |
 
 #### Classes
 
 | Class | Purpose | Key Methods |
 | --- | --- | --- |
-| `InfoCard` | Displays an info card with an icon, label, and item count. | N/A |
+| `InfoCard` | Displays a card with an icon, label, and item count. | N/A |
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
 | --- | --- | --- | --- |
-| `InfoCard` | `icon: LucideIcon`, `label: string`, `numberOfItems: number`, `variant: "default" | `JSX` | Renders an info card with the specified icon, label, and item count. |
+| `InfoCard` | `icon: LucideIcon`, `label: string`, `numberOfItems: number`, `variant: "default" | `JSX` | Renders a card with the provided icon, label, and item count. The variant can optionally change the style of the icon badge. |
+
+#### Configuration or Constants
+
+None.
 
 #### Notes
 
-- The `InfoCard` component uses `IconBadge` to display the icon and an optional variant badge.
-- The `numberOfItems` is pluralized correctly based on its value.
-- The `variant` prop is optional and defaults to "default". It can be used to style the card differently (e.g., "success").
+- The `InfoCard` component conditionally pluralizes the number of items displayed.
+- The `variant` prop is optional and defaults to `"default"` if not provided.
+- The `IconBadge` component is used to display the icon with a badge, which can be styled by the `variant` prop.
 
 ---
 
@@ -1700,14 +1712,14 @@ This file defines a reusable `InfoCard` component that displays an icon, a label
 
 #### Module Overview
 
-This file defines the `SearchPage` component, which renders the search results page for the Learning Management System (LMS). It fetches course data based on user input and categories, and displays them using the `SearchInput`, `Categories`, and `CoursesList` components.
+This file defines the `SearchPage` component for the Learning Management System (LMS) application. It handles the search functionality for courses based on user input and category selection. It fetches course data and renders a search input, categories, and a list of courses matching the search criteria.
 
 #### Dependencies
 
 | Import | Purpose |
 | --- | --- |
 | `axios` | HTTP client for making API requests. |
-| `Categories` | Component to display category list. |
+| `Categories` | Component to display available categories. |
 | `SearchInput` | Component for search input. |
 | `auth` | Authentication service from Clerk. |
 | `redirect` | Utility from Next.js for client-side navigation. |
@@ -1718,7 +1730,7 @@ This file defines the `SearchPage` component, which renders the search results p
 
 | Class | Purpose | Key Methods |
 | --- | --- | --- |
-| `SearchPage` | Main component for the search page. | N/A |
+| `SearchPage` | Main component for search page. | N/A |
 
 #### Functions
 
@@ -1726,12 +1738,18 @@ This file defines the `SearchPage` component, which renders the search results p
 | --- | --- | --- | --- |
 | `getCourses` | `{ userId: string, title?: string, categoryId: string }` | `Promise<Course[]>` | Fetches courses based on user ID and search parameters. |
 
+#### Configuration or Constants
+
+| Constant | Purpose |
+| --- | --- |
+| `process.env.BACK_END_URL` | Base URL for backend API requests. |
+
 #### Notes
 
-- The `SearchPage` component checks for a valid user ID before proceeding. If no user ID is found, it redirects to the home page.
-- The `categories` data is fetched from the backend API to populate the `Categories` component.
-- The `courses` data is fetched using the `getCourses` action, which combines the user ID and search parameters to filter the courses.
-- The `SearchInput` component is conditionally rendered for mobile view (`md:hidden`).
+- Ensure that the `userId` is available before proceeding with the search; otherwise, redirect to the home page.
+- The `searchParams` object includes optional `title` and required `categoryId` for filtering courses.
+- The `getCourses` function is asynchronous and relies on the `userId` and `searchParams` to fetch relevant course data.
+- The `Categories` and `CoursesList` components are used to display categories and filtered course lists, respectively.
 
 ---
 
@@ -1744,39 +1762,33 @@ This file defines the `SearchPage` component, which renders the search results p
 
 #### Module Overview
 
-This file defines a React component `Categories` that renders a list of category items, each with a label and an icon. The icons are mapped to category names using a predefined `iconMap`.
+This file defines a React component `Categories` that renders a list of category items, each associated with a specific icon. It uses a predefined mapping of category names to corresponding icon components from the `react-icons` library.
 
 #### Dependencies
 
 | Import | Purpose |
 | --- | --- |
-| `FcEngineering`, `FcFilmReel`, `FcMultipleDevices`, `FcMusic`, `FcOldTimeCamera`, `FcSalesPerformance`, `FcSportsMode` | React icons used for visual representation of categories. |
-| `IconType` | Type definition for the icons. |
-| `CategoryItem` | Component used to render each category item. |
+| `FcEngineering`, `FcFilmReel`, `FcMultipleDevices`, `FcMusic`, `FcOldTimeCamera`, `FcSalesPerformance`, `FcSportsMode` | Icon components from the `react-icons` library. |
+| `IconType` | Type definition for icon components. |
+| `CategoryItem` | Custom component used to render each category item. |
 
 #### Classes
 
 | Class | Purpose | Key Methods |
 | --- | --- | --- |
-| `Categories` | Renders a list of category items with corresponding icons. | None |
+| `Categories` | Renders a list of category items with corresponding icons. | N/A |
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
 | --- | --- | --- | --- |
-| `iconMap` | None | `Record<{name: string}["name"], IconType>` | Maps category names to corresponding icons. |
-
-#### Configuration or Constants
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `iconMap` | `Record<{name: string}["name"], IconType>` | Static mapping of category names to icons. |
+| `iconMap` | Maps category names to icon components. | `IconType` | Static mapping object. |
 
 #### Notes
 
-- The `Categories` component expects a prop `items` which is an array of objects with `_id` and `name` fields.
-- The `CategoryItem` component is responsible for rendering each individual category item.
-- The `iconMap` is used to dynamically assign icons to categories based on their names.
+- The `Categories` component expects a prop `items` which is an array of objects, each containing a `_id` and `name`.
+- The `CategoryItem` component is used to render each category, with the icon determined by the `iconMap`.
+- The `Categories` component is designed to be flexible and can easily be extended to include new categories by adding them to the `iconMap`.
 
 ---
 
@@ -1785,34 +1797,38 @@ This file defines a React component `Categories` that renders a list of category
 
 #### Overview
 
-# `lms-app/app/(dashboard)/(routes)/search/_components/category-item.tsx`
+# File Overview
 
-This file defines a `CategoryItem` component used to represent individual categories in the search dashboard. It allows users to select a category, updating the URL query parameters accordingly.
+The `category-item.tsx` file defines a `CategoryItem` component, which represents a selectable category item within the LMS application's dashboard. This component is used to filter search results by category and visually indicates whether it is currently selected.
 
 #### Dependencies
 
 | Import | Purpose |
-| --- | --- |
-| `cn` | Utility function for conditionally combining class names. |
-| `usePathname`, `useRouter`, `useSearchParams` | Hooks from `next/navigation` for accessing and manipulating the current URL. |
-| `qs` | Query string manipulation library. |
-| `IconType` | Type definition for react-icons. |
+| ------ | ------- |
+| `cn` from `@/lib/utils` | Utility function to concatenate class names conditionally. |
+| `usePathname`, `useRouter`, `useSearchParams` from `next/navigation` | Hooks to access and manipulate the current pathname, router, and search parameters. |
+| `qs` from `query-string` | Utility library to stringify URL query parameters. |
+| `IconType` from `react-icons` | Type definition for icons used in the component. |
 
 #### Classes
 
-There are no classes in this file.
+| Class | Purpose | Key Methods |
+| ----- | -------- | ------------ |
+| None | This file does not define any classes. |
 
 #### Functions
 
-There are no standalone functions in this file.
+| Function | Parameters | Returns | Description |
+| -------- | ---------- | ------- | ----------- |
+| `CategoryItem` | `label: string`, `icon?: IconType`, `value?: string` | JSX Element | A React functional component that renders a category item button. |
 
 #### Notes
 
-- The `CategoryItem` component expects a `label` prop, which is the text displayed for the category.
-- The `icon` prop is optional and should be a react-icon component if provided.
-- The `value` prop is optional and represents the category's identifier.
-- The component checks if the current category is selected by comparing the `value` prop with the `categoryId` query parameter.
-- The `onClick` function updates the URL query parameters to reflect the selected category, removing the `categoryId` if the same category is clicked again.
+- The `CategoryItem` component uses the `usePathname`, `useRouter`, and `useSearchParams` hooks to interact with the current URL and update the search parameters when clicked.
+- The `qs.stringifyUrl` function is used to construct the new URL with updated query parameters.
+- The `cn` utility function is used to conditionally apply CSS classes based on whether the category is selected.
+- The `Icon` prop is optional and if provided, it will render the specified icon next to the category label.
+- The `onClick` function updates the URL and navigates to the new URL using the `router.push` method.
 
 ---
 
@@ -1825,35 +1841,38 @@ There are no standalone functions in this file.
 
 #### Module Overview
 
-This file defines the `AnalyticsPage` component, which displays analytics data for teachers. It fetches analytics data based on the authenticated user's ID and renders it using `DataCard` and `Chart` components.
+This file defines the `AnalyticsPage` component, which displays analytics data for teachers. It fetches data from the backend and renders it using `DataCard` and `Chart` components.
 
 #### Dependencies
 
 | Import | Purpose |
 | --- | --- |
 | `getAnalytics` | Fetches analytics data for a given user ID. |
-| `auth` | Provides the authenticated user's ID. |
+| `auth` | Provides authentication context, including the current user's ID. |
 | `redirect` | Redirects the user to the home page if not authenticated. |
-| `DataCard` | Displays key metrics in a card format. |
+| `DataCard` | Displays data in a card format. |
 | `Chart` | Renders a chart based on provided data. |
 
 #### Classes
 
 | Class | Purpose | Key Methods |
 | --- | --- | --- |
-| `AnalyticsPage` | Main component to display teacher analytics. | None |
+| `AnalyticsPage` | Main component for displaying teacher analytics. | None |
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
 | --- | --- | --- | --- |
-| `getAnalytics` | `userId` | `Promise<{ data: any, totalRevenue: number, totalSales: number }>` | Fetches analytics data for the given user ID. |
+| `getAnalytics` | `userId` | Analytics data | Fetches analytics data for the given user ID. |
+| `auth` | None | User ID | Provides the current authenticated user's ID. |
+| `redirect` | `path` | Redirects to the specified path | Redirects the user to the home page if no user ID is present. |
 
 #### Notes
 
-- If the user is not authenticated, the component redirects them to the home page.
-- The `DataCard` components display total revenue and total sales.
-- The `Chart` component visualizes the analytics data passed to it.
+- Ensure the user is authenticated before fetching analytics data.
+- If `userId` is not available, the user is redirected to the home page.
+- The `DataCard` component is used to display total revenue and sales in a formatted manner.
+- The `Chart` component visualizes the analytics data provided.
 
 ---
 
@@ -1866,38 +1885,37 @@ This file defines the `AnalyticsPage` component, which displays analytics data f
 
 #### Module Overview
 
-This file defines a React component `Chart` that renders a bar chart using `recharts`. It takes in data as a prop and displays it in a styled card. The chart visualizes total values associated with different names.
+This file defines a `Chart` component that renders a bar chart using `recharts`. It takes in a `data` prop and displays it in a responsive container wrapped in a `Card` component from our UI library.
 
 #### Dependencies
 
 | Import | Purpose |
 | --- | --- |
-| `Card` | A UI component for styling the chart container. |
-| `Bar`, `BarChart`, `ResponsiveContainer`, `XAxis`, `YAxis` | Components from `recharts` to build the bar chart. |
+| `Card` | A UI component for displaying content in a card layout. |
+| `Bar`, `BarChart`, `ResponsiveContainer`, `XAxis`, `YAxis` | Components from `recharts` library to render the bar chart. |
 
 #### Classes
 
 | Class | Purpose | Key Methods |
 | --- | --- | --- |
-| `Chart` | A React component that renders a bar chart. | N/A |
+| `Chart` | Renders a bar chart using `recharts`. | N/A |
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
 | --- | --- | --- | --- |
-| `Chart` | `{data: chartProps['data']}` | JSX.Element | Renders a bar chart using the provided data. |
+| `Chart` | `data` | JSX.Element | Renders a bar chart with the provided data. |
 
-#### Configuration or Constants
+#### Configuration
 
-| Name | Type | Description |
-| --- | --- | --- |
-| `chartProps` | Interface | Defines the shape of the data prop expected by the `Chart` component. |
+No configuration or constants are defined in this file.
 
 #### Notes
 
-- The `tickFormatter` in `YAxis` formats the tick values to include a dollar sign.
-- The `Bar` component uses a radius of `[4,4,0,0]` for rounded corners.
-- The chart is responsive and adjusts its size to fit its container.
+- The `data` prop is expected to be an array of objects with `name` and `total` properties.
+- The `YAxis` tick formatter formats the tick values as currency.
+- The bar chart is styled with a radius to give it rounded corners.
+- The chart is responsive and will adjust its size based on the container's dimensions.
 
 ---
 
@@ -1910,38 +1928,36 @@ This file defines a React component `Chart` that renders a bar chart using `rech
 
 #### Module Overview
 
-This file defines a `DataCard` component, a reusable UI element used to display a single piece of analytics data in a formatted card. It formats the value if specified, and presents it alongside a descriptive label.
+This file defines a `DataCard` component that displays a card with a label and a value, optionally formatted as a price. It's used in the teacher analytics section of the dashboard to present key metrics in a clean, readable format.
 
 #### Dependencies
 
-| Import | Source | Purpose |
-| --- | --- | --- |
-| `Card`, `CardContent`, `CardHeader`, `CardTitle` | `@/components/ui/card` | UI components for structuring the card layout. |
-| `formatPrice` | `@/lib/format` | Utility function to format numeric values as prices. |
+| Import | Purpose |
+| --- | --- |
+| `Card`, `CardContent`, `CardHeader`, `CardTitle` | UI components from a custom component library for structured layout. |
+| `formatPrice` | Utility function to format numbers as prices. |
 
 #### Classes
 
 | Class | Purpose | Key Methods |
 | --- | --- | --- |
-| N/A | N/A | N/A |
+| `DataCard` | Displays a card with a label and a value | N/A |
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
 | --- | --- | --- | --- |
-| `DataCard` | `label: string`, `value: number`, `shouldFormat?: boolean` | JSX.Element | Renders a card with a label and formatted or raw value. |
+| `formatPrice` | `number` | `string` | Formats a number as a price string. |
 
 #### Configuration or Constants
 
-| Name | Type | Default Value | Description |
-| --- | --- | --- | --- |
-| N/A | N/A | N/A | N/A |
+None
 
 #### Notes
 
-- The `shouldFormat` prop determines whether the `value` is passed through `formatPrice` or displayed as is.
-- Ensure `value` is always a number to avoid errors in formatting.
-- The card layout is styled for readability and consistency within the dashboard.
+- The `shouldFormat` prop determines if the `value` should be passed through `formatPrice` to be displayed as a formatted price.
+- Ensure that the `value` prop is a number to avoid errors when formatting.
+- The `label` prop is required to provide a descriptive title for the card content.
 
 ---
 
@@ -1960,9 +1976,9 @@ This file defines the `CoursesPage` component, which displays a list of courses 
 
 | Import | Purpose |
 | --- | --- |
-| `DataTable` | A reusable data table component. |
-| `columns` | Configuration for the columns to be displayed in the `DataTable`. |
-| `auth` | Authentication hook from `@clerk/nextjs` to get the current user ID. |
+| `DataTable` | A reusable data table component for displaying tabular data. |
+| `columns` | Defines the columns to be displayed in the `DataTable`. |
+| `auth` | Provides authentication context from `@clerk/nextjs`. |
 | `redirect` | Utility from `next/navigation` to redirect the user. |
 | `axios` | HTTP client for making API requests. |
 
@@ -1970,25 +1986,19 @@ This file defines the `CoursesPage` component, which displays a list of courses 
 
 | Class | Purpose | Key Methods |
 | --- | --- | --- |
-| `CoursesPage` | Main component to fetch and display courses. | None |
+| `CoursesPage` | The main component that fetches and displays course data. | N/A |
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
 | --- | --- | --- | --- |
-| `CoursesPage` | None | JSX element | Fetches courses for the authenticated teacher and renders them in a `DataTable`. |
-
-#### Configuration or Constants
-
-| Identifier | Purpose |
-| --- | --- |
-| `process.env.BACK_END_URL` | Base URL for the backend API. |
+| `CoursesPage` | None | JSX element | Fetches course data and renders a `DataTable` with the course list. |
 
 #### Notes
 
-- The `CoursesPage` component checks if a user ID is present; if not, it redirects the user to the home page.
-- The `DataTable` component uses the `columns` configuration to determine which fields to display.
-- Ensure that the `BACK_END_URL` environment variable is correctly set to the backend API URL.
+- The `CoursesPage` checks for a `userId` from the authentication context. If no `userId` is found, it redirects the user to the home page.
+- The course data is fetched from the backend using an API call to `${process.env.BACK_END_URL}/api/courses`.
+- The `DataTable` component is used to display the course data, with columns defined in the `columns` import.
 
 ---
 
@@ -1999,41 +2009,37 @@ This file defines the `CoursesPage` component, which displays a list of courses 
 
 # `lms-app/app/(dashboard)/(routes)/teacher/courses/[courseId]/page.tsx`
 
-This file defines the `CourseIdPage` component, which displays the setup page for a specific course in the LMS application. It allows teachers to customize and manage their course details, including title, description, image, category, chapters, price, and attachments.
+#### Module Overview
+
+This file defines the `CourseIdPage` component, which displays the course setup page for a specific course identified by `courseId`. It fetches course data, checks user permissions, and renders various forms and components to customize and manage the course.
 
 #### Dependencies
 
-| Import | Description |
+| Import | Purpose |
 | --- | --- |
 | `IconBadge` | Custom component for displaying icons with badges. |
 | `auth` | Authentication utility from `@clerk/nextjs`. |
-| `CircleDollarSign`, `File`, `LayoutDashboard`, `ListChecks` | Icon components from `lucide-react`. |
-| `redirect` | Navigation utility from `next/navigation`. |
-| `TitleForm`, `DescriptionForm`, `ImageForm`, `CategoryForm`, `PriceForm`, `AttachmentsForm`, `ChapterForm`, `Banner`, `Actions` | Custom form components for managing course details. |
+| `CircleDollarSign`, `File`, `LayoutDashboard`, `ListChecks` | Icons from `lucide-react`. |
+| `redirect` | Utility from `next/navigation` for redirecting users. |
+| `TitleForm`, `DescriptionForm`, `ImageForm`, `CategoryForm`, `PriceForm`, `AttachmentsForm`, `ChapterForm`, `Banner`, `Actions` | Custom form and utility components. |
 
 #### Classes
 
-| Class | Purpose | Key Methods |
-| --- | --- | --- |
-| `CourseIdPage` | Main component for the course setup page. | N/A |
+There are no classes in this file.
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
 | --- | --- | --- | --- |
-| `CourseIdPage` | `{ params: { courseId: string } }` | JSX | Renders the course setup page with necessary forms and data. |
-
-#### Configuration
-
-- `process.env.BACK_END_URL`: The base URL for the backend API.
+| `CourseIdPage` | `{ params: { courseId: string } }` | `JSX.Element` | Renders the course setup page with various forms and components. |
 
 #### Notes
 
 - The component checks if the user is authenticated and redirects to the homepage if not.
-- It fetches course details, categories, and chapters from the backend and displays them in the appropriate forms.
-- The component displays a banner indicating whether the course is published or not.
-- The `Actions` component is disabled until all required fields are filled out.
-- The `courseChapters` array is expected to be sorted by position, but this is commented out in the code.
+- It fetches course data and categories from the backend and displays a banner indicating the course's publication status.
+- The `Actions` component is conditionally disabled based on whether all required fields are filled.
+- The `courseChapters` array is fetched and used to display course chapters.
+- Ensure the environment variable `BACK_END_URL` is set correctly in your environment.
 
 ---
 
@@ -2042,22 +2048,22 @@ This file defines the `CourseIdPage` component, which displays the setup page fo
 
 #### Overview
 
-# File Overview
+# Module Overview
 
-The `lms-app/app/(dashboard)/(routes)/teacher/courses/[courseId]/_components/actions.tsx` file provides UI components and functionality for managing courses within the LMS application. It allows teachers to publish or unpublish a course and delete a course.
+The `actions.tsx` file defines the `Actions` component, which provides buttons for publishing or deleting a course in the LMS application. It's part of the teacher's dashboard for managing courses.
 
 #### Dependencies
 
 | Import | Description |
 | --- | --- |
-| `ConfirmModal` | A modal component for confirming actions. |
-| `Button` | A button component for UI interactions. |
+| `ConfirmModal` | A modal component for confirming actions like deletion. |
+| `Button` | A UI button component. |
 | `useConfettiStore` | A hook to manage confetti animations. |
-| `axios` | A promise-based HTTP client for making requests. |
-| `Trash` | An icon for the delete action. |
+| `axios` | A library for making HTTP requests. |
+| `Trash` | An icon for the delete button. |
 | `useRouter` | A hook from Next.js for navigation. |
 | `useState` | A React hook for managing state. |
-| `toast` | A library for displaying toast notifications. |
+| `toast` | A library for displaying notifications. |
 
 #### Functions
 
@@ -2068,12 +2074,12 @@ The `lms-app/app/(dashboard)/(routes)/teacher/courses/[courseId]/_components/act
 
 #### Notes
 
-- The `onDelete` function uses `axios.delete` to send a request to the backend API to delete the course.
-- The `onPublish` function uses `axios.patch` to toggle the published status of the course.
+- The `onDelete` function uses `axios.delete` to remove a course from the server.
+- The `onPublish` function uses `axios.patch` to toggle the published status of a course.
 - The `ConfirmModal` component is used to confirm the deletion action.
-- The `Button` component is used for the publish/unpublish and delete actions.
-- The `toast` library is used to show success and error messages to the user.
-- The `useConfettiStore` hook is used to trigger a confetti animation when a course is published.
+- The `confetti.onOpen` method is called when a course is published, triggering a confetti animation.
+- The `router.refresh` method is used to refresh the current page after an action is completed.
+- The `isLoading` state is used to manage the loading state of the component.
 
 ---
 
@@ -2084,42 +2090,41 @@ The `lms-app/app/(dashboard)/(routes)/teacher/courses/[courseId]/_components/act
 
 # Module Overview
 
-This file defines the `AttachmentsForm` component, which allows teachers to add and delete attachments for a specific course. It provides an interface for uploading files and displays existing attachments with options to delete them.
+The `attachments-form.tsx` file defines a React component for managing course attachments within the LMS application. It allows teachers to add, view, and delete attachments for a specific course.
 
-# Dependencies
+#### Dependencies
 
 | Import | Purpose |
-| --- | --- |
-| `z` | Validation schema using Zod. |
-| `axios` | HTTP client for making requests to the backend. |
-| `useRouter` | Hook from Next.js for navigation and refreshing the router. |
+|--------|---------|
+| `z` | Validation using Zod schema. |
+| `axios` | HTTP requests to the backend. |
+| `useRouter` | Navigation hooks from Next.js. |
 | `useState` | React hook for managing component state. |
-| `toast` | Library for displaying notifications. |
-| `PlusCircle`, `File`, `Loader2`, `X` | Icons from `lucide-react`. |
-| `Button` | Custom button component from the UI library. |
+| `toast` | Notifications using react-hot-toast. |
+| `PlusCircle`, `File`, `Loader2`, `X` | Icons from lucide-react. |
+| `Button` | Custom button component. |
 | `FileUpload` | Custom file upload component. |
 
-# Classes
+#### Classes
 
 | Class | Purpose | Key Methods |
-| --- | --- | --- |
-| `AttachmentsForm` | Main component for handling course attachments. | `toggleEdit`, `onSubmit`, `onDelete` |
+|-------|---------|-------------|
+| `AttachmentsForm` | Manages course attachments UI and logic. | `toggleEdit`, `onSubmit`, `onDelete` |
 
-# Functions
+#### Functions
 
 | Function | Parameters | Returns | Description |
-| --- | --- | --- | --- |
-| `toggleEdit` | None | None | Toggles the edit state of the form. |
-| `onSubmit` | `values: z.infer<typeof formSchema>` | None | Submits the form data to the backend and handles success/error notifications. |
-| `onDelete` | `attachmentIdx: number` | None | Deletes the attachment at the specified index and handles success/error notifications. |
+|----------|------------|---------|-------------|
+| `toggleEdit` | None | void | Toggles the edit mode for the attachments form. |
+| `onSubmit` | `values: z.infer<typeof formSchema>` | void | Submits the form data to the backend. |
+| `onDelete` | `attachmentIdx: number` | void | Deletes an attachment by its index. |
 
-# Notes
+#### Notes
 
-- The form uses Zod for schema validation to ensure the URL is provided.
-- The component uses React hooks for state management and side effects.
-- Notifications are displayed using the `toast` library.
-- The `FileUpload` component is used for uploading new files.
-- The `Loader2` icon is displayed while an attachment is being deleted.
+- The form uses Zod for schema validation.
+- The `onSubmit` function handles both successful and error states with toast notifications.
+- The `onDelete` function updates the UI with a loader while the deletion request is in progress.
+- Ensure the backend API endpoints `/api/courses/[courseId]/attachments` and `/api/courses/[courseId]/attachments/[attachmentIdx]` are correctly implemented.
 
 ---
 
@@ -2128,44 +2133,45 @@ This file defines the `AttachmentsForm` component, which allows teachers to add 
 
 #### Overview
 
-# Module Overview
+### Module Overview
 
-This file defines the `CategoryForm` component, which allows teachers to edit the category of a specific course. It includes form handling, validation, and UI elements to facilitate this functionality.
+This file defines the `CategoryForm` component, which allows teachers to edit the category of a specific course. It provides an interface for selecting a category from a list of options and submitting the change.
 
-#### Dependencies
+### Dependencies
 
 | Import | Purpose |
 |--------|---------|
-| `z` | Provides schema validation using Zod. |
-| `zodResolver` | Integrates Zod validation with React Hook Form. |
-| `axios` | Makes HTTP requests to update course categories. |
-| `useRouter` | Provides navigation capabilities within the Next.js app. |
-| `useForm` | Hook from React Hook Form to manage form state and validation. |
-| `useState` | React hook to manage component state. |
-| `toast` | Displays notifications using react-hot-toast. |
-| `cn` | Utility function to conditionally combine class names. |
-| `Pencil` | Icon from lucide-react for the edit button. |
-| Various UI components | Custom form components from the project's UI library. |
+| `z` | Validation schema using Zod. |
+| `zodResolver` | Resolver for integrating Zod with React Hook Form. |
+| `axios` | HTTP client for making API requests. |
+| `useRouter` | Hook from Next.js for navigation. |
+| `useForm` | Hook from React Hook Form for managing form state. |
+| `useState` | React hook for managing component state. |
+| `toast` | Library for displaying notifications. |
+| `cn` | Utility function for conditional class names. |
+| `Pencil` | Icon from `lucide-react`. |
+| `Form`, `FormControl`, `FormDescription`, `FormField`, `FormItem`, `FormLabel`, `FormMessage` | UI components for form elements. |
+| `Textarea` | UI component for text input. |
+| `Button` | UI component for buttons. |
+| `Combobox` | UI component for dropdown selection. |
 
-#### Classes
+### Classes
 
-| Class | Purpose | Key Methods |
-|-------|---------|-------------|
-| `CategoryForm` | Manages the form for editing a course category. | `toggleEdit`, `onSubmit` |
+No classes are defined in this file.
 
-#### Functions
+### Functions
 
 | Function | Parameters | Returns | Description |
 |----------|------------|---------|-------------|
-| `CategoryForm` | `intialData`, `courseId`, `options` | JSX for the form component | Renders the form for editing a course category. |
+| `CategoryForm` | `intialData`, `courseId`, `options` | JSX element | Component that renders the form for editing a course category. |
 
-#### Notes
+### Notes
 
-- The form uses Zod for schema validation to ensure the `categoryId` is provided.
+- The form uses Zod for schema validation to ensure the `categoryId` is not empty.
 - The `Combobox` component is used for selecting a category from the provided options.
-- The form's state is managed using React Hook Form, which simplifies form handling and validation.
-- Notifications are shown using `toast` for success and error messages.
-- The `cn` utility function is used to conditionally apply CSS classes.
+- The form submission updates the course category via a PATCH request to the API.
+- Notifications are shown using `toast` for success or error messages.
+- The component toggles between display and edit modes using the `isEditing` state.
 
 ---
 
@@ -2174,42 +2180,43 @@ This file defines the `CategoryForm` component, which allows teachers to edit th
 
 #### Overview
 
-# Module Overview
+# File Overview
 
-This file defines the `ChapterForm` component, which is used to create and manage chapters within a course in the LMS application. It provides a form to add new chapters and displays existing chapters in a list that can be reordered.
+The `chapter-form.tsx` file provides a form for creating and managing chapters within a specific course in the LMS application. It allows teachers to add new chapters, edit existing ones, and reorder chapters.
 
 #### Dependencies
 
 | Import | Purpose |
-| ------ | ------- |
-| `z` | Library for schema validation using Zod. |
-| `zodResolver` | Resolver for integrating Zod schemas with React Hook Form. |
+| --- | --- |
+| `z` | Validation schema for form inputs. |
+| `zodResolver` | Resolver for integrating Zod validation with React Hook Form. |
 | `axios` | HTTP client for making API requests. |
-| `useRouter` | Hook from Next.js for navigation. |
+| `useRouter` | Hook from Next.js for navigation and routing. |
 | `useForm` | Hook from React Hook Form for managing form state. |
 | `useState` | React hook for managing component state. |
-| `toast` | Library for displaying notifications. |
-| `cn` | Utility function for conditionally combining class names. |
-| `Loader2`, `PlusCircle` | Icons from the `lucide-react` library. |
-| `Form`, `FormControl`, `FormDescription`, `FormField`, `FormItem`, `FormLabel`, `FormMessage` | UI components for building forms. |
+| `toast` | Utility for displaying notifications. |
+| `cn` | Utility for conditionally combining class names. |
+| `Loader2`, `PlusCircle` | Icons from `lucide-react`. |
+| `Form`, `FormControl`, `FormDescription`, `FormField`, `FormItem`, `FormLabel`, `FormMessage` | UI components for form elements. |
 | `Button`, `Input` | UI components for buttons and input fields. |
-| `ChaptersList` | Component for displaying a list of chapters. |
+| `ChaptersList` | Component for displaying and managing a list of chapters. |
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
-| -------- | ---------- | ------- | ----------- |
-| `onSubmit` | `values: z.infer<typeof formSchema>` | `void` | Handles form submission to create a new chapter. |
-| `onReorder` | `updatedData: { id: string; position: number }[]` | `void` | Handles reordering of chapters. |
+| --- | --- | --- | --- |
+| `onSubmit` | `values: z.infer<typeof formSchema>` | `Promise<void>` | Handles form submission to create a new chapter. |
+| `onReorder` | `updatedData: { id: string; position: number }[]` | `Promise<void>` | Handles reordering of chapters. |
 | `onEdit` | `chapterId: string` | `void` | Navigates to the edit page for a specific chapter. |
 
 #### Notes
 
-- The form uses Zod for schema validation to ensure the chapter title is provided.
-- The `onSubmit` function sends a POST request to create a new chapter and displays a success or error message.
-- The `onReorder` function sends a PATCH request to update the positions of chapters and displays a success or error message.
+- The form validation schema ensures that the chapter title is not empty.
+- The `onSubmit` function handles the creation of a new chapter and updates the UI accordingly.
+- The `onReorder` function updates the order of chapters and notifies the user of success or failure.
 - The `onEdit` function navigates to the edit page for a specific chapter.
-- The component conditionally renders a form to create a new chapter or a list of existing chapters based on the `isCreating` state.
+- The component conditionally renders different UI elements based on the state (`isCreating`, `isUpdating`).
+- The `ChaptersList` component is used to display and manage existing chapters.
 
 ---
 
@@ -2220,31 +2227,31 @@ This file defines the `ChapterForm` component, which is used to create and manag
 
 # File Overview
 
-The `chapters-list.tsx` file provides a draggable and reorderable list of chapters for a course in the LMS application. It allows teachers to rearrange chapters and edit them directly from the dashboard.
+The `chapters-list.tsx` file defines a React component that renders a draggable list of chapters for a course. It allows teachers to reorder chapters and edit them directly from the dashboard.
 
 #### Dependencies
 
 | Import | Purpose |
-| ------ | ------- |
+| --- | --- |
 | `useEffect`, `useState` from `react` | React hooks for managing state and side effects. |
 | `DragDropContext`, `Droppable`, `Draggable`, `DropResult` from `@hello-pangea/dnd` | Components and types from the `react-dnd` library for drag-and-drop functionality. |
 | `cn` from `@/lib/utils` | A utility function for conditionally combining class names. |
 | `Grip`, `Pencil` from `lucide-react` | Icon components for drag handle and edit button. |
-| `Badge` from `@/components/ui/badge` | A UI component for displaying badges. |
+| `Badge` from `@/components/ui/badge` | A UI component for displaying status badges. |
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
-| -------- | ---------- | ------- | ----------- |
-| `ChaptersList` | `{ onEdit: (_id: string) => void, onReorder: (updateData: { id: string; position: number }[]) => void, items: { title: string; _id: string; isPublished: boolean; position: number; isFree: string; }[] }` | `JSX.Element` | A React component that renders a draggable list of chapters. |
+| --- | --- | --- | --- |
+| `ChaptersList` | `onEdit: (_id: string) => void`, `onReorder: (updateData: { id: string; position: number }[]) => void`, `items: { title: string; _id: string; isPublished: boolean; position: number; isFree: string }[]` | `JSX.Element` | A React component that renders a list of chapters with drag-and-drop functionality. |
 
 #### Notes
 
-- The component relies on the `react-dnd` library for drag-and-drop functionality. Ensure this library is correctly installed and configured in the project.
-- The `onEdit` and `onReorder` props are callbacks that need to be provided by the parent component to handle edit and reorder actions.
-- The `items` prop should be an array of chapter objects with specific properties (`title`, `_id`, `isPublished`, `position`, `isFree`).
-- The component uses conditional class names to style the chapters based on their published status.
-- The `useEffect` hooks ensure that the component state is updated when the component mounts and when the `items` prop changes.
+- The component uses the `react-dnd` library for drag-and-drop functionality, which requires wrapping the app in a `DragDropContext` provider.
+- The `onEdit` and `onReorder` props are callbacks that the parent component must provide to handle editing and reordering of chapters.
+- The `items` prop is an array of chapter objects, each with properties like `title`, `_id`, `isPublished`, `position`, and `isFree`.
+- The component conditionally applies CSS classes based on the chapter's `isPublished` status to change the appearance of published chapters.
+- The `useEffect` hook is used to update the local state when the `items` prop changes, ensuring the list is always in sync with the parent component's state.
 
 ---
 
@@ -2253,46 +2260,45 @@ The `chapters-list.tsx` file provides a draggable and reorderable list of chapte
 
 #### Overview
 
-### Module Overview
+# Module Overview
 
-This file defines the `DescriptionForm` component, which allows teachers to view and edit the description of a specific course within the LMS application. It uses React Hook Form for form handling and validation, and Zod for schema validation.
+This file defines a React component `DescriptionForm` that allows teachers to view and edit the description of a specific course. It uses `react-hook-form` for form handling and validation, `axios` for making HTTP requests, and `zod` for schema validation.
 
-### Dependencies
+# Dependencies
 
 | Import | Purpose |
 |--------|---------|
-| `z` | Zod library for schema validation. |
-| `zodResolver` | Resolver for React Hook Form to integrate with Zod. |
-| `axios` | HTTP client for making API requests. |
+| `z` | Schema validation with Zod. |
+| `zodResolver` | Resolver for react-hook-form to work with Zod. |
+| `axios` | HTTP client for making requests to the API. |
 | `useRouter` | Next.js hook for navigation and refreshing the router. |
-| `useForm` | Hook from React Hook Form for managing form state. |
+| `useForm` | Hook from react-hook-form for managing form state. |
 | `useState` | React hook for managing component state. |
 | `toast` | Library for displaying notifications. |
-| `cn` | Utility function for conditional class names. |
-| `Pencil` | Icon from `lucide-react` for the edit button. |
-| `Form`, `FormControl`, `FormDescription`, `FormField`, `FormItem`, `FormLabel`, `FormMessage` | UI components from the project's component library. |
-| `Textarea`, `Button` | UI components from the project's component library. |
+| `cn` | Utility function for conditionally combining class names. |
+| `Pencil` | Icon from lucide-react for the edit button. |
+| `Form`, `FormControl`, `FormDescription`, `FormField`, `FormItem`, `FormLabel`, `FormMessage` | UI components for form layout and styling. |
+| `Textarea` | UI component for text input fields. |
+| `Button` | UI component for buttons. |
 
-### Classes
+# Classes
 
-| Class | Purpose | Key Methods |
-|-------|---------|-------------|
-| `DescriptionForm` | Manages the form for editing a course description. | `toggleEdit`, `onSubmit` |
+There are no classes in this file.
 
-### Functions
+# Functions
 
-| Function | Parameters | Returns | Description |
-|----------|------------|---------|-------------|
-| `toggleEdit` | None | None | Toggles the editing state of the form. |
-| `onSubmit` | `values: z.infer<typeof formSchema>` | None | Handles form submission, updates the course description, and shows notifications. |
+There are no standalone functions in this file.
 
-### Notes
+# Configuration
 
-- The form validation ensures that the course description is not empty.
-- The `toggleEdit` function switches between view and edit modes.
-- The form submission updates the course description via a PATCH request to the API.
+The form schema is defined using Zod to ensure the description is at least one character long.
+
+# Notes
+
+- The form switches between view and edit modes using the `isEditing` state.
+- The `onSubmit` function handles form submission, updating the course description via an API call.
 - Notifications are displayed using `toast` for success and error messages.
-- The `cn` function is used for conditional styling based on the form state.
+- The `cn` function is used to conditionally apply CSS classes based on the component's state.
 
 ---
 
@@ -2301,43 +2307,43 @@ This file defines the `DescriptionForm` component, which allows teachers to view
 
 #### Overview
 
-# Module Overview
+### Module Overview
 
-This file defines the `ImageForm` component, which allows teachers to upload or change the course image for a specific course. It handles the UI for toggling between viewing and editing the course image, and manages the form submission to update the course image URL.
+This file defines the `ImageForm` component, which allows teachers to upload or change the course image for a specific course. It includes form validation, image upload handling, and user feedback through toast notifications.
 
-#### Dependencies
+### Dependencies
 
-| Import | Description |
-|--------|-------------|
-| `z` | Zod library for form validation. |
-| `axios` | HTTP client for making API requests. |
-| `useRouter` | Next.js hook for navigation and refreshing the router. |
+| Import | Purpose |
+| ------ | ------- |
+| `z` | Validation schema using Zod. |
+| `axios` | HTTP client for making requests to the backend. |
+| `useRouter` | Hook from Next.js for navigation and refreshing the router. |
 | `useState` | React hook for managing component state. |
-| `toast` | React-hot-toast library for displaying notifications. |
-| `ImageIcon`, `Pencil`, `PlusCircle` | Icons from `lucide-react`. |
+| `toast` | Library for displaying toast notifications. |
+| `ImageIcon`, `Pencil`, `PlusCircle` | Icons from `lucide-react` for UI elements. |
 | `Button` | Custom button component from the UI library. |
 | `FileUpload` | Custom file upload component. |
 | `Image` | Next.js Image component for optimized image loading. |
 
-#### Classes
+### Classes
 
 | Class | Purpose | Key Methods |
-|-------|---------|-------------|
-| `ImageForm` | Manages the UI and logic for editing and submitting the course image. | `toggleEdit`, `onSubmit` |
+| ----- | ------- | ----------- |
+| `ImageForm` | Main component for handling course image form. | `toggleEdit`, `onSubmit` |
 
-#### Functions
+### Functions
 
 | Function | Parameters | Returns | Description |
-|----------|------------|---------|-------------|
-| `toggleEdit` | None | void | Toggles the editing state of the image form. |
-| `onSubmit` | `values: z.infer<typeof formSchema>` | void | Submits the form data to update the course image. |
+| -------- | ---------- | ------- | ----------- |
+| `toggleEdit` | None | None | Toggles the editing state of the form. |
+| `onSubmit` | `values: z.infer<typeof formSchema>` | None | Handles form submission, updates the course image, and shows notifications. |
 
-#### Notes
+### Notes
 
 - The form validation schema ensures that the `imageUrl` is not empty.
-- The `FileUpload` component is used for uploading the new image, and its `onChange` callback triggers the form submission.
-- The component uses `react-hot-toast` for user feedback on success or failure of the image upload.
-- The `router.refresh()` method is called after a successful image upload to update the course data.
+- The `FileUpload` component is responsible for handling the actual file upload process.
+- The `onSubmit` function sends a PATCH request to update the course image and refreshes the router upon success.
+- Error handling is done using `toast.error` to notify the user if something goes wrong during the submission.
 
 ---
 
@@ -2348,7 +2354,7 @@ This file defines the `ImageForm` component, which allows teachers to upload or 
 
 ### Module Overview
 
-This file defines a React component `PriceForm` that allows teachers to view and edit the price of a specific course. It uses the `react-hook-form` library for form handling and validation, and `axios` for making HTTP requests to update the course price.
+This file defines a React component, `PriceForm`, which allows teachers to view and edit the price of a specific course. It uses the `react-hook-form` library for form handling and validation, and `axios` for making API requests.
 
 ### Dependencies
 
@@ -2361,7 +2367,7 @@ This file defines a React component `PriceForm` that allows teachers to view and
 | `useForm` | Hook from `react-hook-form` for managing form state. |
 | `useState` | React hook for managing component state. |
 | `toast` | Library for displaying notifications. |
-| `cn` | Utility function for conditionally combining class names. |
+| `cn` | Utility function for conditional class names. |
 | `DollarSignIcon`, `Pencil` | Icons from `lucide-react`. |
 | `Form`, `FormControl`, `FormField`, `FormItem`, `FormLabel`, `FormMessage` | UI components for form layout. |
 | `Button`, `Input` | UI components for button and input fields. |
@@ -2375,10 +2381,11 @@ This file defines a React component `PriceForm` that allows teachers to view and
 
 ### Notes
 
-- The form validation ensures that the price field is not empty.
+- The form uses Zod for schema validation to ensure the price is a non-empty string.
 - The `formatPrice` function is used to display the price in a user-friendly format.
-- The component toggles between view and edit modes for the course price.
-- Error handling is implemented to show user-friendly messages when the API call fails.
+- The component toggles between view and edit modes, allowing teachers to update the course price.
+- Error handling is done using `toast` to show notifications to the user.
+- The form submission updates the course price via a PATCH request to the API.
 
 ---
 
@@ -2387,44 +2394,37 @@ This file defines a React component `PriceForm` that allows teachers to view and
 
 #### Overview
 
-# Module Overview
+# `lms-app/app/(dashboard)/(routes)/teacher/courses/[courseId]/_components/title-form.tsx`
 
-This file defines the `TitleForm` component, which allows teachers to view and edit the title of a specific course. It uses React Hook Form for form handling and validation, and Zod for schema validation.
+This file defines a React component, `TitleForm`, which allows teachers to view and edit the title of a course. It uses form validation with `react-hook-form` and `zod` for schema validation.
 
-# Dependencies
+#### Dependencies
 
 | Import | Purpose |
-| - | - |
-| `z` | Zod library for schema validation. |
-| `zodResolver` | Resolver for React Hook Form to integrate with Zod. |
-| `axios` | HTTP client for making requests to the backend. |
-| `useRouter` | Hook from Next.js for navigation and refreshing the router. |
-| `useForm` | Hook from React Hook Form for managing form state. |
-| `useState` | React hook for managing component state. |
-| `toast` | Function from react-hot-toast for displaying notifications. |
-| `Pencil` | Icon from lucide-react for the edit button. |
-| `Form`, `FormControl`, `FormDescription`, `FormField`, `FormItem`, `FormLabel`, `FormMessage` | UI components from the project's component library. |
-| `Input`, `Button` | UI components from the project's component library. |
+| ------ | ------- |
+| `z` | Schema validation with `zod`. |
+| `zodResolver` | Resolver for `react-hook-form` to work with `zod`. |
+| `axios` | HTTP client for making requests to the API. |
+| `useRouter` | Hook from `next/navigation` for navigation and routing. |
+| `useForm` | Hook from `react-hook-form` to manage form state. |
+| `useState` | React hook to manage component state. |
+| `toast` | Function from `react-hot-toast` for displaying notifications. |
+| `Pencil` | Icon from `lucide-react` for the edit button. |
+| `Form`, `FormControl`, `FormDescription`, `FormField`, `FormItem`, `FormLabel`, `FormMessage` | UI components from the local `@/components/ui` directory. |
+| `Input`, `Button` | UI components from the local `@/components/ui` directory. |
 
-# Classes
-
-| Class | Purpose | Key Methods |
-| - | - | - |
-| `TitleForm` | Manages the form for editing a course title. | `toggleEdit`, `onSubmit` |
-
-# Functions
+#### Functions
 
 | Function | Parameters | Returns | Description |
-| - | - | - | - |
-| `onSubmit` | `values: z.infer<typeof formSchema>` | `void` | Handles form submission, updates the course title, and shows a success or error message. |
+| -------- | ---------- | ------- | ----------- |
+| `onSubmit` | `values: z.infer<typeof formSchema>` | `Promise<void>` | Handles form submission, updates the course title, and shows a success or error message. |
 
-# Notes
+#### Notes
 
-- The form uses Zod for schema validation to ensure the title is not empty.
-- The `toggleEdit` function switches between view and edit modes.
-- The form submission updates the course title via a PATCH request to the backend.
-- Notifications are shown using `react-hot-toast`.
-- The component uses the `useRouter` hook from Next.js to refresh the router after a successful update.
+- The form uses `zod` for schema validation to ensure the title is not empty.
+- The `onSubmit` function sends a PATCH request to update the course title and refreshes the router on success.
+- The component toggles between view and edit modes using the `isEditing` state.
+- Notifications for success and error are displayed using `react-hot-toast`.
 
 ---
 
@@ -2435,7 +2435,7 @@ This file defines the `TitleForm` component, which allows teachers to view and e
 
 # Module Overview
 
-This file defines the `ChapterIdPage` component, which is a React component for the chapter page within a course in the LMS application. It allows teachers to view and edit chapter details, including the title, description, access settings, and video.
+This file defines the `ChapterIdPage` component, which is a page in the LMS application for teachers to manage a specific chapter within a course. It allows teachers to customize the chapter's title, description, access settings, and video content.
 
 #### Dependencies
 
@@ -2445,26 +2445,25 @@ This file defines the `ChapterIdPage` component, which is a React component for 
 | `auth` | Authentication utility from `@clerk/nextjs`. |
 | `axios` | HTTP client for making requests to the backend. |
 | `ArrowLeft`, `Eye`, `LayoutDashboard`, `Video` | Icons from `lucide-react`. |
-| `Link` | Component from `next/link` for client-side navigation. |
+| `Link` | Component from `next/link` for navigation. |
 | `redirect` | Function from `next/navigation` for redirecting users. |
-| `ChapterTitleForm`, `ChapterDescriptionForm`, `ChapterAccessForm`, `ChapterVideoForm` | Custom form components for editing chapter details. |
+| `ChapterTitleForm`, `ChapterDescriptionForm`, `ChapterAccessForm`, `ChapterVideoForm` | Custom components for managing chapter details. |
 | `Banner` | Custom component for displaying banners. |
-| `ChapterActions` | Custom component for chapter-related actions. |
+| `ChapterActions` | Custom component for chapter-specific actions. |
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
 | --- | --- | --- | --- |
-| `ChapterIdPage` | `{ params: { courseId: string; chapterId: string } }` | JSX | Renders the chapter page with forms and actions for editing chapter details. |
+| `ChapterIdPage` | `{ params: { courseId: string; chapterId: string } }` | JSX | Renders the chapter management page for a specific chapter. |
 
 #### Notes
 
-- The `ChapterIdPage` component fetches chapter data from the backend using `axios`.
-- It checks if the user is authenticated using `auth()` from `@clerk/nextjs`.
-- If the user is not authenticated, it redirects them to the homepage.
+- The `ChapterIdPage` component fetches chapter data from the backend and displays it in forms for editing.
+- It checks if the user is authenticated and redirects to the homepage if not.
 - The component displays a banner indicating whether the chapter is published or not.
-- It uses custom form components (`ChapterTitleForm`, `ChapterDescriptionForm`, `ChapterAccessForm`, `ChapterVideoForm`) for editing chapter details.
-- The `ChapterActions` component is disabled if not all required fields are filled out.
+- The completion status of required fields (title, description, video URL) is calculated and displayed.
+- The `ChapterActions` component is disabled if all required fields are not filled out.
 
 ---
 
@@ -2475,37 +2474,45 @@ This file defines the `ChapterIdPage` component, which is a React component for 
 
 # Module Overview
 
-This file defines the `ChapterAccessForm` component, which allows teachers to toggle the free access status of a specific chapter within a course. It uses React Hook Form for form handling and Zod for schema validation.
+This file defines the `ChapterAccessForm` component, which allows teachers to toggle the free access status of a specific chapter within a course. It provides a form to update the chapter's access settings.
 
 #### Dependencies
 
 | Import | Purpose |
-| --- | --- |
-| `z` | Schema validation with Zod. |
+|--------|---------|
+| `z` | Validation schema using Zod. |
 | `zodResolver` | Resolver for integrating Zod with React Hook Form. |
 | `axios` | HTTP client for making requests to the backend. |
-| `useRouter` | Hook from Next.js for navigation and refreshing the router state. |
+| `useRouter` | Hook from Next.js for navigation and routing. |
 | `useForm` | Hook from React Hook Form for managing form state. |
 | `useState` | React hook for managing component state. |
-| `toast` | Library for displaying toast notifications. |
+| `toast` | Library for displaying notifications. |
 | `cn` | Utility function for conditionally combining class names. |
 | `Pencil` | Icon from `lucide-react` for the edit button. |
-| `Form`, `FormControl`, `FormDescription`, `FormField`, `FormItem` | Form components from the UI library. |
-| `Button` | Button component from the UI library. |
-| `Checkbox` | Checkbox component from the UI library. |
+| `Form`, `FormControl`, `FormDescription`, `FormField`, `FormItem`, `Button`, `Checkbox` | UI components from the project's component library. |
+
+#### Classes
+
+| Class | Purpose | Key Methods |
+|-------|---------|-------------|
+| `ChapterAccessForm` | Component to manage chapter access settings. | `toggleEdit`, `onSubmit` |
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
-| --- | --- | --- | --- |
-| `ChapterAccessForm` | `intialData`, `courseId`, `chapterId` | JSX Element | Renders the form for toggling chapter access. |
+|----------|------------|---------|-------------|
+| `ChapterAccessForm` | `intialData`, `courseId`, `chapterId` | JSX element | Renders the form for managing chapter access. |
+
+#### Configuration
+
+- `formSchema`: A Zod schema to validate the form data.
 
 #### Notes
 
-- The form uses Zod for schema validation to ensure the `isFree` field is a boolean.
+- The form uses React Hook Form with Zod for validation.
 - The `onSubmit` function sends a PATCH request to update the chapter's access status.
-- The component toggles between a read-only state and an editable state using the `isEditing` state.
-- Notifications are displayed using `toast` for success and error messages.
+- Notifications are displayed using `react-hot-toast`.
+- The component toggles between view and edit modes using the `isEditing` state.
 
 ---
 
@@ -2516,33 +2523,33 @@ This file defines the `ChapterAccessForm` component, which allows teachers to to
 
 # Module Overview
 
-This file defines the `ChapterActions` component, which provides UI elements for publishing or deleting a chapter within a course. It's part of the LMS application's teacher dashboard, specifically for managing course chapters.
+The `chapter-actions.tsx` file provides UI components and functionality for managing actions related to a specific chapter within a course. It allows teachers to publish or unpublish a chapter and delete a chapter entirely.
 
 #### Dependencies
 
 | Import | Purpose |
 | --- | --- |
-| `ConfirmModal` | A modal component for confirming actions, used for deleting chapters. |
-| `Button` | A UI button component for triggering actions. |
+| `ConfirmModal` | A modal component for confirming actions, used here for deleting a chapter. |
+| `Button` | A button component for triggering actions. |
 | `axios` | A promise-based HTTP client for making API requests. |
-| `Trash` | An icon from `lucide-react` used in the delete button. |
+| `Trash` | An icon from `lucide-react` used for the delete button. |
 | `useRouter` | A hook from `next/navigation` for programmatic navigation and refreshing. |
 | `useState` | A React hook for managing component state. |
-| `toast` | A utility for showing notifications, from `react-hot-toast`. |
+| `toast` | A function from `react-hot-toast` for displaying notifications. |
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
 | --- | --- | --- | --- |
-| `onDelete` | None | None | Handles the deletion of a chapter, shows a success or error message, and refreshes the router. |
-| `onPublish` | None | None | Handles the publishing or unpublishing of a chapter, shows a success or error message, and refreshes the router. |
+| `onDelete` | None | None | Handles the deletion of a chapter, shows a success or error toast, and navigates accordingly. |
+| `onPublish` | None | None | Handles the publishing or unpublishing of a chapter, shows a success or error toast, and refreshes the router. |
 
 #### Notes
 
-- The `onDelete` function uses a `ConfirmModal` to ensure the user confirms the deletion before proceeding.
-- The `onPublish` function toggles the published status of a chapter.
-- The component uses `toast` for user feedback on success or failure of actions.
+- The `onDelete` function uses a `ConfirmModal` to ensure the user intends to delete the chapter.
+- The `onPublish` function toggles the `isPublished` state of the chapter.
 - The `isLoading` state is used to manage the loading state of the component, disabling buttons during API calls.
+- Error handling is done using `toast.error` to inform the user of any issues.
 
 ---
 
@@ -2553,40 +2560,41 @@ This file defines the `ChapterActions` component, which provides UI elements for
 
 # Module Overview
 
-This file defines the `ChapterDescriptionForm` component, which allows teachers to view and edit the description of a specific chapter within a course. The form handles both the display of the current description and the editing process, including validation and submission of changes.
+This file defines the `ChapterDescriptionForm` component, which allows teachers to view and edit the description of a specific chapter within a course. It uses React Hook Form for form handling and Zod for schema validation.
 
 #### Dependencies
 
 | Import | Purpose |
-| --- | --- |
-| `z` | Validation schema using Zod. |
+| ------ | ------- |
+| `z` | Schema validation using Zod. |
 | `zodResolver` | Resolver for integrating Zod with React Hook Form. |
-| `axios` | HTTP client for making requests to the API. |
+| `axios` | HTTP client for making API requests. |
 | `useRouter` | Hook from Next.js for navigation and routing. |
 | `useForm` | Hook from React Hook Form for managing form state. |
 | `useState` | React hook for managing component state. |
 | `toast` | Library for displaying notifications. |
 | `cn` | Utility function for conditionally combining class names. |
-| `Pencil` | Icon component from Lucide. |
-| `Form`, `FormControl`, `FormDescription`, `FormField`, `FormItem`, `FormLabel`, `FormMessage` | UI components for form elements. |
-| `Textarea` | Textarea component for form inputs. |
-| `Button` | Button component for form actions. |
-| `Editor` | Rich text editor component. |
-| `Preview` | Component for previewing the chapter description. |
+| `Pencil` | Icon from `lucide-react` for the edit button. |
+| `Form`, `FormControl`, `FormItem`, `FormLabel`, `FormMessage`, `FormField`, `FormDescription`, `Textarea`, `Button`, `Editor`, `Preview` | UI components from the project's component library. |
+
+#### Classes
+
+| Class | Purpose | Key Methods |
+| ----- | ------- | ----------- |
+| `ChapterDescriptionForm` | Main component for editing chapter descriptions. | `toggleEdit`, `onSubmit` |
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
-| --- | --- | --- | --- |
-| `ChapterDescriptionForm` | `intialData`, `courseId`, `chapterId` | JSX for the form component | Renders the form for editing the chapter description. |
+| -------- | ---------- | ------- | ----------- |
+| `ChapterDescriptionForm` | `intialData`, `courseId`, `chapterId` | JSX for the form component. | Renders the form for editing chapter descriptions. |
 
 #### Notes
 
-- The form uses Zod for schema validation to ensure the description is not empty.
-- The `Editor` component is used for rich text editing, allowing for more complex formatting.
-- Notifications are displayed using `toast` to inform the user of success or failure in updating the chapter description.
-- The form state is managed using React Hook Form, which simplifies form handling and validation.
-- The `cn` utility function is used to conditionally apply CSS classes based on the component's state.
+- The form uses Zod for validation to ensure the description is not empty.
+- The `Editor` component is used for rich text editing.
+- Notifications are displayed using `toast` for success and error messages.
+- The component toggles between view and edit modes based on the `isEditing` state.
 
 ---
 
@@ -2597,47 +2605,41 @@ This file defines the `ChapterDescriptionForm` component, which allows teachers 
 
 # Module Overview
 
-This file defines the `ChapterTitleForm` component, which allows teachers to view and edit the title of a specific chapter within a course. It uses React Hook Form for form handling and Zod for schema validation.
+This file defines the `ChapterTitleForm` component, which allows teachers to view and edit the title of a specific chapter within a course. It uses React Hook Form for form handling and validation, and Zod for schema validation.
 
-#### Dependencies
+# Dependencies
 
 | Import | Purpose |
-| ------ | ------- |
-| `z` | Zod library for schema validation. |
+|--------|---------|
+| `z` | Schema validation with Zod. |
 | `zodResolver` | Resolver for integrating Zod with React Hook Form. |
-| `axios` | HTTP client for making requests to the backend API. |
-| `useRouter` | Hook from Next.js for navigation and routing. |
+| `axios` | HTTP client for making API requests. |
+| `useRouter` | Hook from Next.js for navigation. |
 | `useForm` | Hook from React Hook Form for managing form state. |
 | `useState` | React hook for managing component state. |
 | `toast` | Library for displaying notifications. |
-| `Pencil` | Icon from lucide-react for the edit button. |
+| `Pencil` | Icon from `lucide-react` for the edit button. |
 | `Form`, `FormControl`, `FormDescription`, `FormField`, `FormItem`, `FormLabel`, `FormMessage` | UI components from the project's component library. |
 | `Input`, `Button` | UI components from the project's component library. |
 
-#### Classes
+# Classes
 
 | Class | Purpose | Key Methods |
-| ----- | ------- | ----------- |
-| `ChapterTitleForm` | Main component for editing chapter titles. | N/A |
+|-------|---------|-------------|
+| `ChapterTitleForm` | Main component for editing chapter titles. | `toggleEdit`, `onSubmit` |
 
-#### Functions
+# Functions
 
 | Function | Parameters | Returns | Description |
-| -------- | ---------- | ------- | ----------- |
-| `ChapterTitleForm` | `intialData`, `courseId`, `chapterId` | JSX for the form component. | Renders the form for editing chapter titles. |
+|----------|------------|---------|-------------|
+| `onSubmit` | `values: z.infer<typeof formSchema>` | `void` | Handles form submission, updates the chapter title, and shows a notification. |
 
-#### Configuration
+# Notes
 
-| Variable | Type | Description |
-| -------- | ---- | ----------- |
-| `formSchema` | `z.object` | Zod schema for form validation. |
-
-#### Notes
-
-- The form uses `zodResolver` to validate input against the `formSchema`.
-- The `onSubmit` function sends a PATCH request to update the chapter title.
-- Notifications are displayed using `toast` for success and error messages.
+- The form uses Zod for schema validation to ensure the chapter title is not empty.
+- The `onSubmit` function makes a PATCH request to update the chapter title and refreshes the router on success.
 - The component toggles between view and edit modes using the `isEditing` state.
+- Notifications are shown using `toast` for success and error messages.
 
 ---
 
@@ -2648,7 +2650,7 @@ This file defines the `ChapterTitleForm` component, which allows teachers to vie
 
 ### Module Overview
 
-This file defines the `ChapterVideoForm` component, which allows teachers to upload and change videos for a specific chapter within a course. It handles the UI and logic for toggling between viewing and editing states, submitting video URLs, and displaying feedback.
+This file defines the `ChapterVideoForm` component, which is used to manage the video content for a specific chapter within a course. It allows teachers to add, change, or view the video associated with a chapter.
 
 ### Dependencies
 
@@ -2656,34 +2658,33 @@ This file defines the `ChapterVideoForm` component, which allows teachers to upl
 | --- | --- |
 | `z` | Schema validation using Zod. |
 | `axios` | HTTP client for making requests. |
-| `useRouter` | Next.js hook for navigation. |
-| `useState` | React hook for managing component state. |
+| `useRouter` | Hook from Next.js for navigation. |
+| `useState` | React hook for managing state. |
 | `toast` | Library for displaying notifications. |
 | `Pencil`, `PlusCircle`, `VideoIcon` | Icons from `lucide-react`. |
-| `Button` | Custom button component. |
+| `Button` | UI button component. |
 | `FileUpload` | Component for uploading files. |
-| `MuxPlayer` | Video player component from `@mux/mux-player-react`. |
+| `MuxPlayer`, `MaxResolution` | Video player component from `@mux/mux-player-react`. |
 
 ### Classes
 
 | Class | Purpose | Key Methods |
 | --- | --- | --- |
-| `ChapterVideoForm` | Manages the form for uploading and editing chapter videos. | `toggleEdit`, `onSubmit` |
+| `ChapterVideoForm` | Manages the form for adding or changing a chapter video. | `toggleEdit`, `onSubmit` |
 
 ### Functions
 
 | Function | Parameters | Returns | Description |
 | --- | --- | --- | --- |
 | `toggleEdit` | None | None | Toggles the editing state of the form. |
-| `onSubmit` | `values: z.infer<typeof formSchema>` | None | Submits the video URL to the server and handles the response. |
+| `onSubmit` | `values: z.infer<typeof formSchema>` | None | Submits the form data to update the chapter video. |
 
 ### Notes
 
 - The form uses Zod for schema validation to ensure the video URL is provided.
-- The `FileUpload` component is used for uploading videos, and its `onChange` callback triggers the form submission.
+- The `onSubmit` function handles both adding and updating the video URL via a PATCH request.
 - Notifications are shown using `react-hot-toast` to inform the user of success or failure.
-- The `MuxPlayer` component is used to display the video if one is already uploaded.
-- Ensure the API endpoint `/api/courses/${courseId}/chapters/${chapterId}` is correctly set up to handle PATCH requests.
+- The `MuxPlayer` component is used to display the video if one is already associated with the chapter.
 
 ---
 
@@ -2694,33 +2695,39 @@ This file defines the `ChapterVideoForm` component, which allows teachers to upl
 
 # `lms-app/app/(dashboard)/(routes)/teacher/courses/_components/columns.tsx`
 
-This file defines the column configurations for the courses table in the teacher's dashboard. It uses `@tanstack/react-table` to manage table state and rendering.
+This file defines the column structure for the courses table in the teacher's dashboard. It specifies how each column should be displayed, including headers with sorting functionality and cell contents for each course attribute.
 
 #### Dependencies
 
 | Import | Description |
 | --- | --- |
-| `Button` | UI button component from `@/components/ui/button` |
-| `ColumnDef` | Type definition for column configuration from `@tanstack/react-table` |
-| `ArrowUpDown`, `MoreHorizontal`, `Pencil` | Icon components from `lucide-react` |
-| `DropdownMenu`, `DropdownMenuContent`, `DropdownMenuTrigger`, `DropdownMenuItem` | Dropdown menu components from `@/components/ui/dropdown-menu` |
-| `Link` | Next.js Link component for navigation |
-| `Badge` | Badge component from `@/components/ui/badge` |
-| `cn` | Utility function for class names from `@/lib/utils` |
+| `Button` | UI button component from the custom `ui` package. |
+| `ColumnDef` | Type definition for column configurations from `@tanstack/react-table`. |
+| `ArrowUpDown`, `MoreHorizontal`, `Pencil` | Icon components from `lucide-react`. |
+| `DropdownMenu`, `DropdownMenuContent`, `DropdownMenuTrigger`, `DropdownMenuItem` | Dropdown menu components from the custom `ui` package. |
+| `Link` | Next.js component for client-side navigation. |
+| `Badge` | UI badge component from the custom `ui` package. |
+| `cn` | Utility function for conditional class names from the `lib/utils` module. |
 
-#### Columns
+#### Classes
 
-| Property | Description |
-| --- | --- |
-| `columns` | Array of `ColumnDef<course>` objects defining the columns for the courses table |
+No classes are defined in this file.
+
+#### Functions
+
+No functions are defined in this file.
+
+#### Configuration
+
+No specific configurations are set in this file.
 
 #### Notes
 
-- The `columns` array defines the structure and behavior of each column in the table.
-- Each column has an `accessorKey` that specifies which property of the course object to display.
-- The `header` function in each column definition returns a button for sorting.
-- The `cell` function in each column definition customizes the content and formatting of the cells.
-- The "actions" column includes a dropdown menu for editing courses.
+- The `columns` array defines the columns for the courses table, including sorting functionality for the `title` and `price` columns.
+- The `cell` property for each column defines how the cell contents should be rendered.
+- The `DropdownMenu` component is used to provide an actions menu for each course, allowing the teacher to edit the course.
+- The `Badge` component displays the publication status of each course as either "Published" or "Draft".
+- Ensure that the `course` type matches the structure of the course data being passed to this component.
 
 ---
 
@@ -2729,34 +2736,39 @@ This file defines the column configurations for the courses table in the teacher
 
 #### Overview
 
-# `lms-app/app/(dashboard)/(routes)/teacher/courses/_components/data-table.tsx`
+# File Overview
 
-This file defines a `DataTable` component that renders a customizable data table for displaying course data. It leverages `@tanstack/react-table` for managing table state and functionality.
+The `lms-app/app/(dashboard)/(routes)/teacher/courses/_components/data-table.tsx` file defines a `DataTable` component for displaying tabular data in a structured and interactive way. It leverages the `@tanstack/react-table` library to manage table state, sorting, filtering, and pagination.
 
 #### Dependencies
 
 | Import | Purpose |
-| --- | --- |
-| `React` | Core React library for building UI components. |
-| `@tanstack/react-table` | Library for building powerful and customizable tables. |
-| `@/components/ui/table` | Custom table components for styling. |
-| `@/components/ui/button` | Custom button component for UI consistency. |
-| `@/components/ui/input` | Custom input component for UI consistency. |
-| `lucide-react` | Icon library for adding icons like `PlusCircle`. |
-| `next/link` | Next.js component for client-side navigation. |
+| ------ | ------- |
+| `React` | Provides React functionalities. |
+| `@tanstack/react-table` | A library for building powerful and customizable tables. |
+| `@/components/ui/table` | Custom table components for UI. |
+| `@/components/ui/button` | Custom button component for UI. |
+| `@/components/ui/input` | Custom input component for UI. |
+| `lucide-react` | Icons for UI elements. |
+| `next/link` | Link component for navigation. |
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
-| --- | --- | --- | --- |
-| `DataTable` | `columns: ColumnDef<TData, TValue>[]` <br> `data: TData[]` | `React.ReactElement` | Renders a data table with sorting, filtering, and pagination capabilities. |
+| -------- | ---------- | ------- | ----------- |
+| `DataTable` | `columns: ColumnDef<TData, TValue>[], data: TData[]` | JSX.Element | Renders a table with sorting, filtering, and pagination capabilities. |
+
+#### Classes
+
+There are no classes defined in this file.
 
 #### Notes
 
-- The `DataTable` component expects `columns` and `data` props to be provided. `columns` defines the structure of the table, and `data` is the array of objects to be displayed.
-- The table supports sorting, filtering, and pagination out of the box.
-- Customization of table headers and cells is achieved through the `flexRender` function, which renders the content based on the provided render functions.
-- Ensure that the `columns` prop aligns with the structure of the `data` array objects for proper rendering.
+- The `DataTable` component expects `columns` and `data` props to be passed in. `columns` should be an array of `ColumnDef` objects, and `data` should be an array of data objects that match the structure defined by the columns.
+- The `DataTable` component uses state hooks to manage sorting and filtering. These states are updated via the table instance methods.
+- The table's pagination controls are rendered at the bottom of the table, allowing users to navigate through pages of data.
+- The `Input` component is used for filtering the table data based on the "title" column. This is a simple filter and can be extended for more complex filtering needs.
+- Ensure that the `@tanstack/react-table` library is properly installed and configured in your project to use this component effectively.
 
 ---
 
@@ -2767,35 +2779,35 @@ This file defines a `DataTable` component that renders a customizable data table
 
 # Module Overview
 
-This file defines the `CreatePage` component, which is a React functional component used to create a new course in the LMS application. It uses `react-hook-form` for form handling and validation, and `axios` for making API requests.
+This file defines the `CreatePage` component, which is a form for teachers to create a new course. It uses React Hook Form for form handling and Zod for schema validation. Upon successful submission, it sends the course data to the backend and redirects the user to the newly created course's page.
 
 #### Dependencies
 
-| Import | Description |
-| --- | --- |
-| `z` | A schema declaration and validation library. |
-| `axios` | A promise-based HTTP client for making API requests. |
-| `zodResolver` | A resolver for `react-hook-form` that integrates with `zod` for schema validation. |
-| `useForm` | A hook from `react-hook-form` to manage form state and validation. |
-| `useRouter` | A hook from `next/router` to programmatically navigate between pages. |
-| `Form`, `FormControl`, `FormDescription`, `FormField`, `FormItem`, `FormLabel`, `FormMessage` | UI components for building forms. |
-| `Input` | A UI component for input fields. |
-| `Button` | A UI component for buttons. |
-| `Link` | A component from `next/link` for navigation. |
-| `toast` | A library for displaying toast notifications. |
+| Import | Purpose |
+| ------ | ------- |
+| `z` | Zod library for schema validation |
+| `axios` | HTTP client for making requests to the backend |
+| `zodResolver` | Resolver for integrating Zod with React Hook Form |
+| `useForm` | Hook from React Hook Form for managing form state |
+| `useRouter` | Hook from Next.js for navigation |
+| `Form`, `FormControl`, `FormDescription`, `FormField`, `FormItem`, `FormLabel`, `FormMessage` | UI components for the form layout |
+| `Input` | Input component for form fields |
+| `Button` | Button component for form actions |
+| `Link` | Link component for navigation |
+| `toast` | Library for displaying notifications |
 
 #### Functions
 
 | Function | Parameters | Returns | Description |
-| --- | --- | --- | --- |
-| `CreatePage` | None | JSX.Element | Renders the form for creating a new course. |
+| -------- | ---------- | ------- | ----------- |
+| `onSubmit` | `values: z.infer<typeof formSchema>` | `void` | Handles form submission by sending data to the backend and updating the UI |
 
 #### Notes
 
-- The form validation schema is defined using `zod` and ensures that the `title` field is not empty.
-- The form submission triggers an API call to create a new course and navigates to the course's detail page upon success.
-- Error handling for the API request displays a toast notification to the user.
-- The form includes a cancel button that navigates back to the homepage.
+- The form uses Zod for validation, ensuring the `title` field is not empty.
+- The `onSubmit` function sends a POST request to the `/api/courses` endpoint and handles success and error responses with toast notifications.
+- The form's `Cancel` button uses a `Link` component to navigate back to the homepage.
+- The `Continue` button is disabled if the form is invalid or if a submission is already in progress.
 
 ---
 
@@ -2806,13 +2818,13 @@ This file defines the `CreatePage` component, which is a React functional compon
 
 # Module Overview
 
-The `lms-app/app/(dashboard)/_components/logo.tsx` file defines a React component `Logo` that renders a Next.js `Image` component displaying the application's logo SVG.
+This file defines a React component named `Logo` that renders a Next.js `Image` component to display the application's logo as an SVG file.
 
 # Dependencies
 
 | Import | Purpose |
 | --- | --- |
-| `Image` | A component from Next.js for optimized image rendering. |
+| `Image` | Component from Next.js for optimized image rendering. |
 
 # Classes
 
@@ -2824,13 +2836,13 @@ The `lms-app/app/(dashboard)/_components/logo.tsx` file defines a React componen
 
 | Function | Parameters | Returns | Description |
 | --- | --- | --- | --- |
-| `Logo` | None | JSX element | Returns an `Image` component displaying the logo SVG. |
+| `Logo` | None | JSX element | Returns a Next.js `Image` component displaying the logo SVG. |
 
 # Notes
 
-- The `Logo` component uses the Next.js `Image` component for optimized and responsive image rendering.
-- The logo SVG is located at `/public/logo.svg`.
-- Ensure the SVG file is correctly placed in the public directory to avoid broken images.
+- The `Logo` component uses the `Image` component from Next.js to ensure optimal image loading and rendering.
+- The `src` attribute points to the SVG file located at `/public/logo.svg`.
+- The `alt` attribute provides alternative text for accessibility purposes.
 
 ---
 
